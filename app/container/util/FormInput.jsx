@@ -133,6 +133,8 @@ export function FormInput(props){
                 <View>
                     <Text>Document No.</Text>
                     <TextInput value={documentNo} disabled={true}/>
+                    <Text>Delivery Code</Text>
+                    <TextInput value={documentNo} disabled={true}/>
                 </View>
                 <View>
                 <TouchableOpacity 
