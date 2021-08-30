@@ -4,12 +4,12 @@ import {View, StyleSheet,Text} from 'react-native'
 import {EmoteButton} from "../component/EmoteButton"
 import { faTruckLoading } from '@fortawesome/free-solid-svg-icons'
 export function Header(props){
-    //console.log("ini header data :",props)
+    console.log("ini loading data 2 :",props)
     return(
         <NativeBaseProvider>
         <Center>
         <View style={styles.emoteHeader}>
-            <EmoteButton emotes={props.emotes} wheretogo={props.wheretogo} colorPick={props.colorPick} routeSend={props.routeSend}/>
+            <EmoteButton emotes={props.emotes} wheretogo2={props.wheretogo} colorPick={props.colorPick} routeSend={props.routeSend}/>
         </View>
         <View style={styles.subHead}>
             <Text style={styles.subHeadtext}>{props.textHeader}</Text>  
