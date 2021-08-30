@@ -30,9 +30,9 @@ const loadingHeader=(props)=>{
                 <View style={styles.bodyContainer}>
                     <View>
                         <Text>Drafted</Text>
-                             <RenderView infoData="1"/> 
+                            <RenderView infoData="1"/> 
                         <Text>On Going</Text>
-                             {/* <RenderView  infoData="2"/>  */}
+                            <RenderView infoData="2"/> 
                     </View>
                 </View>
                 <TouchableOpacity

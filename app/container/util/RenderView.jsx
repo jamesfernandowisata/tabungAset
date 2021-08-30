@@ -12,8 +12,11 @@ export function RenderView(navigation){
     // const [getDocType,setDocType]=useState(navigation.infoData)
     useEffect(()=>{
         getData();
-        filterData();
+        
     },[]);
+    useEffect(()=>{
+        filterData();
+    },[dataList])
     useEffect(() => {
         getMoreData();
     }, [page]);
@@ -51,7 +54,7 @@ export function RenderView(navigation){
         console.log(dataList)
         var tes= dataList.filter(data=>data.c_uom_id==navigation.infoData.toString())
         setFilterList(tes)
-        setTimeout(()=>{console.log(filterList)},1000)
+        // setTimeout(()=>{console.log(filterList)},1000)
         
     }
     return(

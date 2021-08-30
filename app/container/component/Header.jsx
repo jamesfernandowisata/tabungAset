@@ -18,7 +18,9 @@ export function Header(props){
 }
 const styles =StyleSheet.create({
     headerNode:{
-        
+        justifyContent:"center",
+        paddingLeft:"25%",
+        marginLeft:"15%"
     },
     emoteHeader:{
         paddingBottom:"5%",
