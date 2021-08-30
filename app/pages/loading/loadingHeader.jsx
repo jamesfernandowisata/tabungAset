@@ -14,7 +14,7 @@ const loadingHeader=(props)=>{
     const [documentDate,setDocumentDate]=useState('');
     const [createBy, setCreateBy]=useState('');
     const [documentStatus,setDocumentStatus]=useState('');
-    console.log("ini loading data :",props)
+   // console.log("ini loading data :",props)
     return(
         <NativeBaseProvider>
             <View style={styles.container}>
@@ -30,9 +30,9 @@ const loadingHeader=(props)=>{
                 <View style={styles.bodyContainer}>
                     <View>
                         <Text>Drafted</Text>
-                            {/* <RenderView/> */}
+                             <RenderView infoData="1"/> 
                         <Text>On Going</Text>
-                            {/* <RenderView/> */}
+                             {/* <RenderView  infoData="2"/>  */}
                     </View>
                 </View>
                 <TouchableOpacity

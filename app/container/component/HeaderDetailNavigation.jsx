@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet,View,Text} from 'react-native'
 export function HeaderDetailNavigation(props){
     if(props.currentPosition==="1"){
-        console.log(props)
+        //console.log(props)
         return(
             <View style={styles.subNavigate}>
                 <Text style={{color:props.colorPick,fontWeight:"bold",fontSize:20}}>Header</Text>

@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import {View, FlatList,Text, RefreshControl,StyleSheet, SafeAreaView} from 'react-native';
+import {View, FlatList,Text, RefreshControl,StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native';
 import Axios from "axios";
 
 
@@ -7,22 +7,25 @@ export function RenderView(navigation){
     const [dataList, setDataList] =useState([]);
     const [page, setPage] =useState(1);
     const [fetchMore, setFetchMore] =useState(true);
-    const [draftedList, setDraftedList] =useState([]);
-    const [onGoingList,setOnGoingList] =useState([]);
+    const [filterList, setFilterList] =useState([]);
 
+    // const [getDocType,setDocType]=useState(navigation.infoData)
     useEffect(()=>{
         getData();
+        filterData();
     },[]);
     useEffect(() => {
         getMoreData();
     }, [page]);
+
     const getData =(refresh)=>{
         if (refresh) {
             setFetchMore(true);
         }
-        Axios.get(``)
+        Axios.get(`http://178.128.30.185:5000/api/v1/products?page=${page}&limit=8`)
             .then((response)=>{
-                setDataList(response.data);
+                //console.log(response);
+                setDataList(response.data.data);
             })
             .catch((error)=>{
                 console.log(error);
@@ -31,12 +34,12 @@ export function RenderView(navigation){
 
     const getMoreData=()=>{
         if(fetchMore){
-            Axios.get(``)
+            Axios.get(`http://178.128.30.185:5000/api/v1/products?page=${page}&limit=8`)
                 .then((response)=>{
                     if(response.data.isMaxPage){
                         setFetchMore(false);
                     }
-                    setDataList(response.data);
+                    setDataList(response.data.data);
                 })
                 .catch((error)=>{
                     console.log(error);
@@ -44,18 +47,24 @@ export function RenderView(navigation){
         }
     }
 
+    const filterData=()=>{
+        console.log(dataList)
+        var tes= dataList.filter(data=>data.c_uom_id==navigation.infoData.toString())
+        setFilterList(tes)
+        setTimeout(()=>{console.log(filterList)},1000)
+        
+    }
     return(
         <SafeAreaView>
             <View>
             <FlatList
-                data={dataList}
-                style={styles.FlatListContainer}            
+                data={filterList}           
                 onEndReachedThreshold={0.01}
                 onEndReached={()=> setPage(page+1)}
                 refreshControl={
                     <RefreshControl
                         refreshing={false}
-                        onRefresh={()=>getProduct(true)}
+                        onRefresh={()=>getData(true)}
                     />
                 }
                 renderItem={({item})=>(
@@ -63,7 +72,7 @@ export function RenderView(navigation){
                     onPress={() => navigation.navigate("Detail", item)}
                     >
                         <View>
-                            <Text>{item.nama}</Text>
+                            <Text>{item.name}</Text>
                         </View>
                     </TouchableOpacity>
                 )}
@@ -82,7 +91,6 @@ const styles= StyleSheet.create({
         flex: 1,
         paddingVertical: '2%',
         paddingHorizontal:'2%',
-        width:'44%',
         marginTop: '2%',
         marginHorizontal: '1%',
         backgroundColor: "#ffffff",
