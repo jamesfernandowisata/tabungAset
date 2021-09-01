@@ -5,16 +5,15 @@ import { faBoxOpen } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import {Header} from "../../container/component/Header"
 import {NativeBaseProvider } from "native-base"
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { RenderView } from '../../container/util/RenderView';
 import {HeaderDetailNavigation} from '../../container/component/HeaderDetailNavigation'
 
 const unloadingHeader=(props)=>{
-    const [documentNo,setDocumentNo] =useState('');
-    const [documentType,setDocumentType]=useState('');
-    const [documentDate,setDocumentDate]=useState('');
-    const [createBy, setCreateBy]=useState('');
-    const [documentStatus,setDocumentStatus]=useState('');
-    //console.log("ini unloading data :",props)
+    const [showDraft,setShowDraft] =useState(false);
+    const [showOnGoing,setShowOnGoing] =useState(false);
+    const [showHidden,setShowHidden]=useState(true);
     return(
         <NativeBaseProvider>
             <View style={styles.container}>
@@ -28,11 +27,31 @@ const unloadingHeader=(props)=>{
                     </View>
                 </View>
                 <View style={styles.bodyContainer}>
-                    <View>
-                        <Text>UnDrafted</Text>
-                            <RenderView/>
-                        <Text>On Going</Text>
-                            <RenderView/>
+                    <View style={styles.subBodyContainer}>
+                    <View style={styles.subsubBodyContainer}>
+                        <Text style={{fontWeight: 'bold', fontSize:18}}>Drafted</Text>
+                        <TouchableOpacity onPress={()=>setShowDraft(!showDraft)}>
+                            <FontAwesomeIcon icon={showHidden?(faChevronDown):(faChevronUp)} size={20} color="#de6600"/>
+                        </TouchableOpacity>
+                    </View>
+                        {
+                            showDraft ? (
+                                <RenderView infoData="1" infowhat="products"/>
+                                ):null
+                        }
+                    </View>
+                    <View style={styles.subBodyContainer}>
+                    <View style={styles.subsubBodyContainer}>
+                        <Text style={{fontWeight: 'bold', fontSize:18}}>On Going</Text>
+                        <TouchableOpacity onPress={()=>setShowOnGoing(!showOnGoing)}>
+                            <FontAwesomeIcon icon={showHidden?(faChevronDown):(faChevronUp)} size={20} color="#de6600"/>
+                        </TouchableOpacity>
+                    </View>
+                        {
+                            showOnGoing ? (
+                                <RenderView infoData="2" infowhat="products"/>
+                                ):null
+                        }
                     </View>
                 </View>
                 <TouchableOpacity
@@ -52,23 +71,37 @@ const styles =StyleSheet.create({
         flex:1,
         marginTop:"10%",
     },
+    subBodyContainer:{
+        paddingBottom:"3%",
+    },
+    subsubBodyContainer:{
+        flexDirection:"row",
+        justifyContent:"space-between",
+        alignItems:"center",
+    },
     headerContainer:{
         flexDirection:"column",
-        height:"19%",
+        height:"29%",
+       // backgroundColor:"red"
     },
-    emoteContainer:{            
+    emoteContainer:{      
+        //backgroundColor: "",      
     },
     subNavContainer:{
-        
+        backgroundColor: "yellow"
     },
     bodyContainer:{
+        //backgroundColor: ""
+        paddingTop:"1%",
+        paddingLeft:"5%",
+        paddingRight:"5%"
     },
     touchButton:{
         position: "absolute",
         zIndex: 9,
         right: "7%",
         bottom:"10%",
-        backgroundColor: "#de6600",
+        backgroundColor: "#003f5a",
         width: 80,
         height: 80,
         borderRadius: 50,

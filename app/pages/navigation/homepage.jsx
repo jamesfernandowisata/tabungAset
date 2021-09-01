@@ -5,7 +5,7 @@ import { faTruckLoading } from '@fortawesome/free-solid-svg-icons'
 import { faBoxOpen } from '@fortawesome/free-solid-svg-icons'
 import { faTruck } from '@fortawesome/free-solid-svg-icons'
 import { faVial } from '@fortawesome/free-solid-svg-icons'
-import {Header} from'../../container/component/Header'
+import {EmoteButton} from'../../container/component/EmoteButton'
 
 const homepage =(props)=>{
 
@@ -22,18 +22,21 @@ const homepage =(props)=>{
                     </Center>
                 </View>                
                 <View style ={styles.buttonContainer}>
-                <View>
-                    <Header emotes={faTruckLoading} colorPick="#003f5a" wheretogo="loadHead" routeSend={props.navigation} textHeader="Loading"/>
+                <View style ={styles.textContainer}>
+                    <EmoteButton emotes={faTruckLoading} colorPick="#003f5a" wheretogo="loadHead" routeSend={props.navigation} textHeader=""/>
+                    <Text>Loading</Text>
                 </View>
                 <View>
-                    <Header emotes={faBoxOpen} colorPick="#de6600" wheretogo="unloadHead" routeSend={props.navigation} textHeader="UnLoading"/>
+                    <EmoteButton emotes={faBoxOpen} colorPick="#de6600" wheretogo="unloadHead" routeSend={props.navigation} textHeader=""/>
+                    <Text>UnLoading</Text>
                 </View> 
                 <View>
-                    <Header emotes={faTruck} colorPick="#007a7a" wheretogo="delifHead"  routeSend={props.navigation} textHeader="Deliver"/>  
+                    <EmoteButton emotes={faTruck} colorPick="#007a7a" wheretogo="delifHead"  routeSend={props.navigation} textHeader=""/> 
+                    <Text>Delivery</Text> 
                 </View>             
                 </View>
                 <View style={styles.footerContainer}>
-                    <Header emotes={faVial} colorPick="#FFFFFF" wheretogo="delifHead"  routeSend={props.navigation} textHeader=""/>  
+                    <EmoteButton emotes={faVial} colorPick="#FFFFFF" wheretogo="delifHead"  routeSend={props.navigation} textHeader=""/>  
                 </View> 
         </NativeBaseProvider>
             
@@ -46,6 +49,9 @@ const styles =StyleSheet.create({
         flex:1,
         marginTop:'10%',
 
+    },
+    textContainer:{
+        alignItems: 'center'
     },
     footerContainer:{
         position: "absolute",

@@ -28,7 +28,7 @@ const styles =StyleSheet.create({
         paddingBottom:"5%",
         paddingLeft:"30%",
         paddingRight:"30%",
-        paddingTop:"20%"
+        paddingTop:"4%"
     },
 
 })

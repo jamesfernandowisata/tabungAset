@@ -8,6 +8,7 @@ export function RenderView(navigation){
     const [page, setPage] =useState(1);
     const [fetchMore, setFetchMore] =useState(true);
     const [filterList, setFilterList] =useState([]);
+    const [whattoget,setwhattoget] =useState(navigation.infowhat);
 
     // const [getDocType,setDocType]=useState(navigation.infoData)
     useEffect(()=>{
@@ -25,7 +26,7 @@ export function RenderView(navigation){
         if (refresh) {
             setFetchMore(true);
         }
-        Axios.get(`http://178.128.30.185:5000/api/v1/products?page=${page}&limit=8`)
+        Axios.get(`http://178.128.30.185:5000/api/v1/${whattoget}?page=${page}&limit=8`)
             .then((response)=>{
                 //console.log(response);
                 setDataList(response.data.data);
@@ -37,7 +38,7 @@ export function RenderView(navigation){
 
     const getMoreData=()=>{
         if(fetchMore){
-            Axios.get(`http://178.128.30.185:5000/api/v1/products?page=${page}&limit=8`)
+            Axios.get(`http://178.128.30.185:5000/api/v1/${whattoget}?page=${page}&limit=8`)
                 .then((response)=>{
                     if(response.data.isMaxPage){
                         setFetchMore(false);
