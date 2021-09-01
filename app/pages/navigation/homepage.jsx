@@ -56,8 +56,8 @@ const styles =StyleSheet.create({
     footerContainer:{
         position: "absolute",
         zIndex: 9,
-        right: "40%",
-        bottom:"20%",
+        right: "10%",
+        bottom:"10%",
         backgroundColor: "#915e91",
         width: 80,
         height: 78,

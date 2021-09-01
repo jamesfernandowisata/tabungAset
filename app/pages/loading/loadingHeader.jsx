@@ -104,8 +104,8 @@ const styles =StyleSheet.create({
     touchButton:{
         position: "absolute",
         zIndex: 9,
-        right: "7%",
-        bottom:"10%",
+        right: "13%",
+        bottom:"3.5%",
         backgroundColor: "#003f5a",
         width: 80,
         height: 80,

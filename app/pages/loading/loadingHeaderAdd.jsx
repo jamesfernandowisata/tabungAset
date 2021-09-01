@@ -12,7 +12,7 @@ const loadingHeaderAdd=(props)=>{
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
                     <View styles={styles.emoteContainer}>
-                        <Header emotes={faTruckLoading} colorPick="#003f5a" wheretogo="home" routeSend={props.navigation} textHeader="What's Loading"/>
+                        <Header emotes={faTruckLoading} colorPick="#003f5a" wheretogo="loadHead" routeSend={props.navigation} textHeader="What's Loading"/>
                     </View>
                     <View styles={styles.subNavContainer}>
                         <HeaderDetailNavigation routeSend={props.navigation} colorPick="#003f5a" currentPosition="1"/>

@@ -26,7 +26,7 @@ export function RenderView(navigation){
         if (refresh) {
             setFetchMore(true);
         }
-        Axios.get(`http://178.128.30.185:5000/api/v1/${whattoget}?page=${page}&limit=3`)
+        Axios.get(`http://178.128.30.185:5000/api/v1/${whattoget}?page=${page}&limit=8`)
             .then((response)=>{
                 //console.log(response);
                 setDataList(response.data.data);
@@ -38,7 +38,7 @@ export function RenderView(navigation){
 
     const getMoreData=()=>{
         if(fetchMore){
-            Axios.get(`http://178.128.30.185:5000/api/v1/${whattoget}?page=${page}&limit=3`)
+            Axios.get(`http://178.128.30.185:5000/api/v1/${whattoget}?page=${page}&limit=8`)
                 .then((response)=>{
                     if(response.data.isMaxPage){
                         setFetchMore(false);
@@ -121,13 +121,13 @@ const styles= StyleSheet.create({
     dataContainer:{
         
         flexDirection:'row',
-        paddingHorizontal:'10%',
+        paddingHorizontal:'5%',
         paddingVertical:'1%',
         width: '100%',
         justifyContent: 'space-between',
     },
     widthControl:{
-        paddingHorizontal:"8%",
+        paddingHorizontal:"3%",
         paddingVertical:"1%"
     }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Text, StyleSheet,View,TouchableOpacity} from "react-native"
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faTruck} from '@fortawesome/free-solid-svg-icons'
@@ -99,9 +99,9 @@ const styles =StyleSheet.create({
     touchButton:{
         position: "absolute",
         zIndex: 9,
-        right: "7%",
-        bottom:"10%",
-        backgroundColor: "#003f5a",
+        right: "13%",
+        bottom:"3.5%",
+        backgroundColor: "#007a7a",
         width: 80,
         height: 80,
         borderRadius: 50,
