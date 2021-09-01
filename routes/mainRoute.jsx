@@ -6,7 +6,11 @@ import loadingHeaderAdd from "../app/pages/loading/loadingHeaderAdd";
 import unloadingHeader from "../app/pages/unloading/unloadingHeader";
 import unloadingHeaderAdd from "../app/pages/unloading/unloadingHeaderAdd";
 import deliveryHeader from "../app/pages/delivery/deliveryHeader";
-import deliveryHeaderAdd from "../app/pages/delivery/deliveryHeaderAdd"
+import deliveryHeaderAdd from "../app/pages/delivery/deliveryHeaderAdd";
+import NavigateAsset from "../app/pages/navigation/NavigateAsset";
+import RegisterAssetsH from "../app/pages/assetFile/register/RegisterAssetsH"; 
+import RegisterAssetsA from "../app/pages/assetFile/register/RegisterAssetsA"
+
 const AppNavigator = createSwitchNavigator(
     {
         home :homepage,
@@ -16,6 +20,9 @@ const AppNavigator = createSwitchNavigator(
         unloadAddH: unloadingHeaderAdd,
         delifHead:deliveryHeader,
         delifAddH:deliveryHeaderAdd,
+        assetNav: NavigateAsset,
+        regisAsset: RegisterAssetsH,
+        addRegis:RegisterAssetsA
     },
     {
         initialRouteName: "home",

@@ -36,7 +36,7 @@ const homepage =(props)=>{
                 </View>             
                 </View>
                 <View style={styles.footerContainer}>
-                    <EmoteButton emotes={faVial} colorPick="#FFFFFF" wheretogo="delifHead"  routeSend={props.navigation} textHeader=""/>  
+                    <EmoteButton emotes={faVial} colorPick="#915e91" wheretogo="assetNav"  routeSend={props.navigation} textHeader=""/>  
                 </View> 
         </NativeBaseProvider>
             
@@ -58,13 +58,13 @@ const styles =StyleSheet.create({
         zIndex: 9,
         right: "10%",
         bottom:"10%",
-        backgroundColor: "#915e91",
+        backgroundColor: "#ffffff",
         width: 80,
         height: 78,
         borderRadius: 50,
         alignItems: "center",
         justifyContent: "center",
-        elevation: 8
+        elevation: 2
     },
     header:{
         top:'2%',
