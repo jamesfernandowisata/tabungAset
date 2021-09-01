@@ -34,11 +34,13 @@ const loadingHeader=(props)=>{
                             <FontAwesomeIcon icon={showHidden?(faChevronDown):(faChevronUp)} size={20} color="#003f5a"/>
                         </TouchableOpacity>
                     </View>
+                    <View style={styles.subsubBodyContainer2}>
                         {
                             showDraft ? (
                                 <RenderView infoData="1" infowhat="products"/>
                                 ):null
                         }
+                    </View>
                     </View>
                     <View style={styles.subBodyContainer}>
                     <View style={styles.subsubBodyContainer}>
@@ -77,6 +79,9 @@ const styles =StyleSheet.create({
     subsubBodyContainer:{
         flexDirection:"row",
         justifyContent:"space-between",
+        alignItems:"center",
+    },
+    subsubBodyContainer2:{
         alignItems:"center",
     },
     headerContainer:{

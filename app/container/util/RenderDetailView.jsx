@@ -3,7 +3,7 @@ import {View, FlatList,Text, RefreshControl,StyleSheet, SafeAreaView, TouchableO
 import Axios from "axios";
 
 
-export function RenderView(navigation){
+export function RenderDetailView(navigation){
     const [dataList, setDataList] =useState([]);
     const [page, setPage] =useState(1);
     const [fetchMore, setFetchMore] =useState(true);
@@ -26,7 +26,7 @@ export function RenderView(navigation){
         if (refresh) {
             setFetchMore(true);
         }
-        Axios.get(`http://178.128.30.185:5000/api/v1/${whattoget}?page=${page}&limit=3`)
+        Axios.get(`http://178.128.30.185:5000/api/v1/${whattoget}?page=${page}&limit=8`)
             .then((response)=>{
                 //console.log(response);
                 setDataList(response.data.data);
@@ -38,7 +38,7 @@ export function RenderView(navigation){
 
     const getMoreData=()=>{
         if(fetchMore){
-            Axios.get(`http://178.128.30.185:5000/api/v1/${whattoget}?page=${page}&limit=3`)
+            Axios.get(`http://178.128.30.185:5000/api/v1/${whattoget}?page=${page}&limit=8`)
                 .then((response)=>{
                     if(response.data.isMaxPage){
                         setFetchMore(false);
@@ -71,24 +71,14 @@ export function RenderView(navigation){
                         onRefresh={()=>getData(true)}
                     />
                 }
-                renderItem={({item})=>(                   
-                        <View style={styles.widthControl}>
-                        <TouchableOpacity
-                        //onPress={() => navigation.navigate("Detail", item)}
-                        style={styles.buttonContainer}
-                        >
-                            <View style={styles.dataContainer}>
-                                <Text>{item.m_product_id}</Text>
-                                <Text>{item.price}</Text>
-                            </View>
-                            <View style={styles.dataContainer}>
-                                <Text>{item.name}</Text>
-                                <Text>{item.c_uom_id}</Text>
-                            </View>
-                        </TouchableOpacity>
+                renderItem={({item})=>(
+                    <TouchableOpacity
+                    onPress={() => navigation.navigate("Detail", item)}
+                    >
+                        <View>
+                            <Text>{item.name}</Text>
                         </View>
-                        
-
+                    </TouchableOpacity>
                 )}
             
                 keyExtractor={(item, index) => index.toString()}
@@ -111,24 +101,7 @@ const styles= StyleSheet.create({
         borderRadius: 10,
         elevation: 5,
 
-    },
-    buttonContainer:{
-        elevation:5,
-        backgroundColor: "#ffffff",
-        padding:"1%",
-        borderRadius: 10,
-    },
-    dataContainer:{
-        
-        flexDirection:'row',
-        paddingHorizontal:'10%',
-        paddingVertical:'1%',
-        width: '100%',
-        justifyContent: 'space-between',
-    },
-    widthControl:{
-        paddingHorizontal:"8%",
-        paddingVertical:"1%"
     }
+
 
 })
