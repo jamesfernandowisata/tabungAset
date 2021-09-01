@@ -12,14 +12,14 @@ const loadingHeaderAdd=(props)=>{
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
                     <View styles={styles.emoteContainer}>
-                        <Header emotes={faTruckLoading} colorPick="#003f5a" wheretogo="loadHead" routeSend={props.navigation} textHeader="What's Loading"/>
+                        <Header emotes={faTruckLoading} colorPick="#98D6EA" wheretogo="loadHead" routeSend={props.navigation} textHeader="What's Loading"/>
                     </View>
                     <View styles={styles.subNavContainer}>
-                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#003f5a" currentPosition="1"/>
+                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#98D6EA" currentPosition="1"/>
                     </View>
                 </View>
                 <View style={styles.inputHeader}>
-                    <FormInput formType="loading" colorPick="#003f5a"/>
+                    <FormInput formType="loading" colorPick="#98D6EA"/>
                 </View>
             </View>
         </NativeBaseProvider>
@@ -55,12 +55,12 @@ const styles =StyleSheet.create({
         fontWeight:"bold",
     },
     subNavigateMainText:{
-        color:"#003f5a",
+        color:"#98D6EA",
         fontWeight:"bold",
         fontSize:20
     },
     nextButtonStyle:{
-        backgroundColor:"#003f5a",
+        backgroundColor:"#98D6EA",
         marginBottom:10,
         alignItems: "center",
         justifyContent: "center",
@@ -87,7 +87,7 @@ const styles =StyleSheet.create({
         zIndex: 9,
         right: 20,
         bottom:20,
-        backgroundColor: "#003f5a",
+        backgroundColor: "#98D6EA",
         width: 80,
         height: 80,
         borderRadius: 50,

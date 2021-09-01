@@ -20,10 +20,10 @@ const loadingHeader=(props)=>{
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
                     <View styles={styles.emoteContainer}>
-                        <Header emotes={faTruckLoading} colorPick="#003f5a" wheretogo="home" routeSend={props.navigation} textHeader="Loading Items"/>
+                        <Header emotes={faTruckLoading} colorPick="#98D6EA" wheretogo="home" routeSend={props.navigation} textHeader="Loading Items"/>
                     </View>
                     <View styles={styles.subNavContainer}>
-                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#003f5a" currentPosition="1"/>
+                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#98D6EA" currentPosition="1"/>
                     </View>
                 </View>
                 <View style={styles.bodyContainer}>
@@ -31,7 +31,7 @@ const loadingHeader=(props)=>{
                     <View style={styles.subsubBodyContainer}>
                         <Text style={{fontWeight: 'bold', fontSize:18}}>Drafted</Text>
                         <TouchableOpacity onPress={()=>setShowDraft(!showDraft)}>
-                            <FontAwesomeIcon icon={showHidden?(faChevronDown):(faChevronUp)} size={20} color="#003f5a"/>
+                            <FontAwesomeIcon icon={showHidden?(faChevronDown):(faChevronUp)} size={20} color="#98D6EA"/>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.subsubBodyContainer2}>
@@ -46,7 +46,7 @@ const loadingHeader=(props)=>{
                     <View style={styles.subsubBodyContainer}>
                         <Text style={{fontWeight: 'bold', fontSize:18}}>On Going</Text>
                         <TouchableOpacity onPress={()=>setShowOnGoing(!showOnGoing)}>
-                            <FontAwesomeIcon icon={showHidden?(faChevronDown):(faChevronUp)} size={20} color="#003f5a"/>
+                            <FontAwesomeIcon icon={showHidden?(faChevronDown):(faChevronUp)} size={20} color="#98D6EA"/>
                         </TouchableOpacity>
                     </View>
                         {
@@ -106,7 +106,7 @@ const styles =StyleSheet.create({
         zIndex: 9,
         right: "13%",
         bottom:"3.5%",
-        backgroundColor: "#003f5a",
+        backgroundColor: "#98D6EA",
         width: 80,
         height: 80,
         borderRadius: 50,

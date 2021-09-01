@@ -19,11 +19,11 @@ const deliveryHeader=(props)=>{
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
                     <View styles={styles.emoteContainer}>
-                        <Header emotes={faTruck} colorPick="#007a7a" wheretogo="home" routeSend={props.navigation} textHeader="Delivering Item"/>
+                        <Header emotes={faTruck} colorPick="#98DDCA" wheretogo="home" routeSend={props.navigation} textHeader="Delivering Item"/>
                     
                     </View>
                     <View styles={styles.subNavContainer}>
-                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#007a7a" currentPosition="1"/>
+                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#98DDCA" currentPosition="1"/>
                     </View>
                 </View>
                 <View style={styles.bodyContainer}>
@@ -31,7 +31,7 @@ const deliveryHeader=(props)=>{
                     <View style={styles.subsubBodyContainer}>
                         <Text style={{fontWeight: 'bold', fontSize:18}}>Drafted</Text>
                         <TouchableOpacity onPress={()=>setShowDraft(!showDraft)}>
-                            <FontAwesomeIcon icon={showHidden?(faChevronDown):(faChevronUp)} size={20} color="#007a7a"/>
+                            <FontAwesomeIcon icon={showHidden?(faChevronDown):(faChevronUp)} size={20} color="#98DDCA"/>
                         </TouchableOpacity>
                     </View>
                         {
@@ -44,7 +44,7 @@ const deliveryHeader=(props)=>{
                     <View style={styles.subsubBodyContainer}>
                         <Text style={{fontWeight: 'bold', fontSize:18}}>On Going</Text>
                         <TouchableOpacity onPress={()=>setShowOnGoing(!showOnGoing)}>
-                            <FontAwesomeIcon icon={showHidden?(faChevronDown):(faChevronUp)} size={20} color="#007a7a"/>
+                            <FontAwesomeIcon icon={showHidden?(faChevronDown):(faChevronUp)} size={20} color="#98DDCA"/>
                         </TouchableOpacity>
                     </View>
                         {
@@ -101,7 +101,7 @@ const styles =StyleSheet.create({
         zIndex: 9,
         right: "13%",
         bottom:"3.5%",
-        backgroundColor: "#007a7a",
+        backgroundColor: "#98DDCA",
         width: 80,
         height: 80,
         borderRadius: 50,

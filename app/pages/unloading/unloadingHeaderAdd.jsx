@@ -12,14 +12,14 @@ const unloadingHeaderAdd=(props)=>{
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
                     <View styles={styles.emoteContainer}>
-                        <Header emotes={faBoxOpen} colorPick="#de6600" wheretogo="home" routeSend={props.navigation} textHeader="Unloading time"/>
+                        <Header emotes={faBoxOpen} colorPick="#FFD3B4" wheretogo="home" routeSend={props.navigation} textHeader="Unloading time"/>
                     </View>
                     <View styles={styles.subNavContainer}>
-                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#de6600" currentPosition="1"/>
+                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#FFD3B4" currentPosition="1"/>
                     </View>
                 </View>
                 <View style={styles.inputHeader}>
-                    <FormInput formType="unloading" colorPick="#de6600"/>
+                    <FormInput formType="unloading" colorPick="#FFD3B4"/>
                 </View>
             </View>
         </NativeBaseProvider>
@@ -55,12 +55,12 @@ const styles =StyleSheet.create({
         fontWeight:"bold",
     },
     subNavigateMainText:{
-        color:"#de6600",
+        color:"#FFD3B4",
         fontWeight:"bold",
         fontSize:20
     },
     nextButtonStyle:{
-        backgroundColor:"#de6600",
+        backgroundColor:"#FFD3B4",
         marginBottom:10,
         alignItems: "center",
         justifyContent: "center",
@@ -87,7 +87,7 @@ const styles =StyleSheet.create({
         zIndex: 9,
         right: 20,
         bottom:20,
-        backgroundColor: "#de6600",
+        backgroundColor: "#FFD3B4",
         width: 80,
         height: 80,
         borderRadius: 50,

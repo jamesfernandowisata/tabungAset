@@ -23,20 +23,20 @@ const homepage =(props)=>{
                 </View>                
                 <View style ={styles.buttonContainer}>
                 <View style ={styles.textContainer}>
-                    <EmoteButton emotes={faTruckLoading} colorPick="#003f5a" wheretogo="loadHead" routeSend={props.navigation} textHeader=""/>
+                    <EmoteButton emotes={faTruckLoading} colorPick="#98D6EA" wheretogo="loadHead" routeSend={props.navigation} textHeader=""/>
                     <Text>Loading</Text>
                 </View>
                 <View>
-                    <EmoteButton emotes={faBoxOpen} colorPick="#de6600" wheretogo="unloadHead" routeSend={props.navigation} textHeader=""/>
+                    <EmoteButton emotes={faBoxOpen} colorPick="#FFD3B4" wheretogo="unloadHead" routeSend={props.navigation} textHeader=""/>
                     <Text>UnLoading</Text>
                 </View> 
                 <View>
-                    <EmoteButton emotes={faTruck} colorPick="#007a7a" wheretogo="delifHead"  routeSend={props.navigation} textHeader=""/> 
+                    <EmoteButton emotes={faTruck} colorPick="#98DDCA" wheretogo="delifHead"  routeSend={props.navigation} textHeader=""/> 
                     <Text>Delivery</Text> 
                 </View>             
                 </View>
                 <View style={styles.footerContainer}>
-                    <EmoteButton emotes={faVial} colorPick="#915e91" wheretogo="assetNav"  routeSend={props.navigation} textHeader=""/>  
+                    <EmoteButton emotes={faVial} colorPick="#7189BF" wheretogo="assetNav"  routeSend={props.navigation} textHeader=""/>  
                 </View> 
         </NativeBaseProvider>
             
