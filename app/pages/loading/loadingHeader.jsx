@@ -19,10 +19,10 @@ const loadingHeader=(props)=>{
         <NativeBaseProvider>
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
-                    <View styles={styles.emoteContainer}>
+                    <View style={styles.emoteContainer}>
                         <Header emotes={faTruckLoading} colorPick="#98D6EA" wheretogo="home" routeSend={props.navigation} textHeader="Loading Items"/>
                     </View>
-                    <View styles={styles.subNavContainer}>
+                    <View style={styles.subNavContainer}>
                         <HeaderDetailNavigation routeSend={props.navigation} colorPick="#98D6EA" currentPosition="1"/>
                     </View>
                 </View>

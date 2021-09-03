@@ -11,7 +11,9 @@ const NavigationAsset = (props)=>{
         <View style={styles.container}>
             {console.log(props)}
             <View style={styles.header}>
-                <Text style={{fontSize:30, justifyContent: 'center',fontWeight:'bold'}}>Asset</Text>
+                <TouchableOpacity onPress={()=>props.navigation.navigate("home")}>
+                    <Text style={{fontSize:30, justifyContent: 'center',fontWeight:'bold'}}>Asset</Text>
+                </TouchableOpacity>
             </View>
             <View style ={styles.buttonContainer}>
             <TouchableOpacity emotes={faShoppingBasket} style ={styles.textContainer} onPress={()=>props.navigation.navigate("viewAsset")} colorPick="#d90053" emotes={faShoppingBasket} routeSend={props.navigation} textHeader="Your Assets">
