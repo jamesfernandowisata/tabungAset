@@ -11,7 +11,7 @@ import NavigateAsset from "../app/pages/navigation/NavigateAsset";
 import RegisterAssetsH from "../app/pages/assetFile/register/RegisterAssetsH"; 
 import RegisterAssetsA from "../app/pages/assetFile/register/RegisterAssetsA";
 import ViewAsset from "../app/pages/assetFile/view/ViewAsset";
-import ViewAllAssets from "../app/pages/assetFile/view/ViewAllAssets";
+import ViewAssetStatus from "../app/pages/assetFile/view/ViewAssetStatus";
 import ViewAssetDetail from "../app/pages/assetFile/view/ViewAssetDetail";
 
 const AppNavigator = createSwitchNavigator(
@@ -27,8 +27,8 @@ const AppNavigator = createSwitchNavigator(
         regisAsset: RegisterAssetsH,
         addRegis:RegisterAssetsA,
         viewAsset: ViewAsset,
-        viewAllA: ViewAllAssets,
-        viewAllAD: ViewAssetDetail
+        viewAS: ViewAssetStatus,
+        viewAD: ViewAssetDetail
 
     },
     {

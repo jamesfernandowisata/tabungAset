@@ -1,9 +1,9 @@
 import React from 'react';
 import {View} from 'react-native'
-const ViewAllAssets=(props)=>{
+const ViewAssetStatus=(props)=>{
     return(
         <View></View>
     )
 }
 
-export default ViewAllAssets;
+export default ViewAssetStatus;

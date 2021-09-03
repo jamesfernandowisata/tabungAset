@@ -9,7 +9,7 @@ export function RenderDetailView(navigation){
     const [fetchMore, setFetchMore] =useState(true);
     const [filterList, setFilterList] =useState([]);
     const [whattoget,setwhattoget] =useState(navigation.infowhat);
-
+    const [columnName,setColumnName] =useState([]);
     // const [getDocType,setDocType]=useState(navigation.infoData)
     useEffect(()=>{
         getData();
@@ -61,7 +61,7 @@ export function RenderDetailView(navigation){
     return(
         <SafeAreaView>
             <View>
-            <FlatList
+            {/* <FlatList
                 data={filterList}           
                 onEndReachedThreshold={0.01}
                 onEndReached={()=> setPage(page+1)}
@@ -73,7 +73,7 @@ export function RenderDetailView(navigation){
                 }
                 renderItem={({item})=>(
                     <TouchableOpacity
-                    onPress={() => navigation.navigate("Detail", item)}
+                    onPress={() => navigation.navigate("", item)}
                     >
                         <View>
                             <Text>{item.name}</Text>
@@ -83,7 +83,10 @@ export function RenderDetailView(navigation){
             
                 keyExtractor={(item, index) => index.toString()}
             >
-            </FlatList>
+            </FlatList> */}
+            {
+                filterList.map()
+            }
 
         </View>
         </SafeAreaView>
