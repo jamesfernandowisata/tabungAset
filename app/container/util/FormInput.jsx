@@ -14,24 +14,28 @@ export function FormInput(props){
     const currentdate = Date()
     const [documentNo ,setDocumentNo] =useState('');
     const [documentType,setDocumentType]=useState(props.documentType);
-    const [createBy,setCreateBy] = useState(props.createdBy);
     const [truckList,setTruckList] = useState([]);
     const [selectedTruck,setSelectedTruck] = useState();
 
-    const [formStatus,setFormStatus] = useState("Drafted")
     const [statusButton,setStatusButton] = useState("false")
     const [token,setToken] = useState(props.token);
     const [addorSave, setaddorSave] = useState(false);
 
-    const [description,setDescription] = useState("");
-    const [value,setValue] = useState=("");
+    //what to send
     const [a_asset_transfer_id,seta_asset_transfer_id] = useState("");
-    const [c_bpartner_id,setc_bpartner_id]=useState("");
-    
+    const [c_bpartner_id,setc_bpartner_id]=useState(""); //selectTruck
+    const [c_bpartnero_id,setc_bpartnero_id] = useState("");
     const [c_bpartner_location_id,setc_bpartner_location_id] = useState("");
     const [c_bpartner_locationo_id,setc_bpartner_locationo_id]=useState("");
-    
-
+    const [c_doctype_id,setc_doctype_id] = useState("");
+    const [documentNo ,setDocumentNo] =useState('');
+    const [documentDate,setDocumentDate]=useState(currentdate);
+    const [formStatus,setFormStatus] = useState("Drafted")
+    const [createDate,setCreateDate] =useState("");
+    const [createBy,setCreateBy] = useState(props.createdBy);
+    const [updateDate,setUpdateDate] = useState("");
+    const [updateBy,setUpdateBy]=useState("");
+    const [description,setDescription] = useState("");
 
     useEffect(()=>{
         getTruck();
@@ -58,21 +62,22 @@ export function FormInput(props){
     });
 
     const generateDocumentNo =()=>{
-        if(formType ==="loading"){
-            Axios.post("http://192.168.88.152:5000/api/v1/assettransfer",inputLoad,{
-                headers:{"Content-Type": "application/json", "authorization":token}
-            })
-                .then(response=>{
-                    console.log("check",response);
-                    //get document no
-                    //setDocumentNo(response.documentNo);
-                    setaddorSave(true);
-                })
-                .catch(error => {
-                    console.log(JSON.stringify(error));
-                });
+        // if(formType ==="loading"){
+        //     Axios.post("http://192.168.88.152:5000/api/v1/assettransfer",inputLoad,{
+        //         headers:{"Content-Type": "application/json", "authorization":token}
+        //     })
+        //         .then(response=>{
+        //             console.log("check",response);
+        //             //get document no
+        //             //setDocumentNo(response.documentNo);
+        //             setaddorSave(true);
+        //         })
+        //         .catch(error => {
+        //             console.log(JSON.stringify(error));
+        //         });
 
-        }
+        // }
+        setaddorSave(true);
     }
     const getTruck =()=>{
         Axios.get("http://192.168.88.152:5000/api/v1/bpartner",{
@@ -92,13 +97,29 @@ export function FormInput(props){
             headers:{"Content-Type": "application/json","authorization":token}
         })
         .then(response => {
-            //console.log("check", response);
-            setTruckList(response.data.data);
+            console.log("check", response);
+            setc_bpartner_id(response.data.c_bpartner_id)
+            setc_bpartnero_id(response.data.c_bpartner_id)
+            if(documentType==="loading"){
+                setc_doctype_id("1")
+            }
+            //setTruckList(response.data.data);
         })
         .catch(error => {
             console.log(JSON.stringify(error));
         });
-
+        Axios.get(`http://192.168.88.152:5000/api/v1/partnerloc/${selectedTruck}`,{
+            headers:{"Content-Type": "application/json","authorization":token}
+        })
+        .then(response => {
+            console.log("check", response);
+            setc_bpartner_location_id(response.data.c_bpartner_lcoation_id)
+            setc_bpartner_locationo_id(response.data.c_bpartner_lcoation_id)
+            //setTruckList(response.data.data);
+        })
+        .catch(error => {
+            console.log(JSON.stringify(error));
+        });
     }
 
     if(formType ==="loading"){
