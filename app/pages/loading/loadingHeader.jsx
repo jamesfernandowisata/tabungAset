@@ -20,10 +20,17 @@ const loadingHeader=(props)=>{
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
                     <View style={styles.emoteContainer}>
-                        <Header emotes={faTruckLoading} colorPick="#98D6EA" wheretogo="home" routeSend={props.navigation} textHeader="Loading Items"/>
+                        <Header emotes={faTruckLoading} colorPick="#58BDDD" wheretogo="home" routeSend={props.navigation} textHeader="Loading Items"/>
                     </View>
                     <View style={styles.subNavContainer}>
-                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#98D6EA" currentPosition="1"/>
+                        <HeaderDetailNavigation 
+                            routeSend={props.navigation} 
+                            colorPick="#58BDDD" 
+                            currentPosition="1" 
+                            text1="Header"
+                            text2="details" 
+                            wheretogo="home"
+                            />
                     </View>
                 </View>
                 <View style={styles.bodyContainer}>
@@ -58,7 +65,8 @@ const loadingHeader=(props)=>{
                 </View>
                 <TouchableOpacity
                     onPress={() => props.navigation.navigate("loadAddH")}
-                    style={styles.touchButton}>
+                    style={styles.touchButton}
+                    >
                     <FontAwesomeIcon icon={faPlus} size={36} color={"#eeeeee"}/>
                 </TouchableOpacity>
             </View>
@@ -93,7 +101,6 @@ const styles =StyleSheet.create({
         //backgroundColor: "",      
     },
     subNavContainer:{
-        backgroundColor: "yellow"
     },
     bodyContainer:{
         //backgroundColor: ""

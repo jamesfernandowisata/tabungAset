@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Text, StyleSheet,View,TouchableOpacity} from "react-native"
+import {Text, StyleSheet,View,TouchableOpacity,ScrollView,SafeAreaView} from "react-native"
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faTruck} from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -19,14 +19,22 @@ const deliveryHeader=(props)=>{
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
                     <View styles={styles.emoteContainer}>
-                        <Header emotes={faTruck} colorPick="#98DDCA" wheretogo="home" routeSend={props.navigation} textHeader="Delivering Item"/>
+                        <Header emotes={faTruck} colorPick="#5ECAAC" wheretogo="home" routeSend={props.navigation} textHeader="Delivering Item"/>
                     
                     </View>
                     <View styles={styles.subNavContainer}>
-                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#98DDCA" currentPosition="1"/>
+                    <HeaderDetailNavigation 
+                            routeSend={props.navigation} 
+                            colorPick="#5ECAAC" 
+                            currentPosition="1" 
+                            text1="Header"
+                            text2="Detail" 
+                            wheretogo="home"
+                            />
                     </View>
                 </View>
-                <View style={styles.bodyContainer}>
+                <SafeAreaView style={{flex: 1}}>
+                <ScrollView style={styles.bodyContainer}>
                     <View style={styles.subBodyContainer}>
                     <View style={styles.subsubBodyContainer}>
                         <Text style={{fontWeight: 'bold', fontSize:18}}>Drafted</Text>
@@ -53,7 +61,11 @@ const deliveryHeader=(props)=>{
                                 ):null
                         }
                     </View>
-                </View>
+                </ScrollView>
+
+
+                </SafeAreaView>
+                
                 <TouchableOpacity
                     onPress={() => props.navigation.navigate("delifAddH")}
                     style={styles.touchButton}>

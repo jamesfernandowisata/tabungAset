@@ -12,10 +12,17 @@ const unloadingHeaderAdd=(props)=>{
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
                     <View styles={styles.emoteContainer}>
-                        <Header emotes={faBoxOpen} colorPick="#FFD3B4" wheretogo="home" routeSend={props.navigation} textHeader="Unloading time"/>
+                        <Header emotes={faBoxOpen} colorPick="#FFA668" wheretogo="home" routeSend={props.navigation} textHeader="Unloading time"/>
                     </View>
                     <View styles={styles.subNavContainer}>
-                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#FFD3B4" currentPosition="1"/>
+                    <HeaderDetailNavigation 
+                            routeSend={props.navigation} 
+                            colorPick="#FFA668" 
+                            currentPosition="1" 
+                            text1="Header"
+                            text2="Detail" 
+                            wheretogo="home"
+                            />
                     </View>
                 </View>
                 <View style={styles.inputHeader}>
@@ -34,12 +41,13 @@ const styles =StyleSheet.create({
     },
     headerContainer:{
         flexDirection:"column",
-        height:"19%",
+        height:"29%",
     },
     inputHeader:{
         flex:1,
         paddingLeft:"7%",
-        paddingRight:"7%"
+        paddingRight:"7%",
+        paddingBottom:"5%"
     },
     textInputStyle:{
         height:40,

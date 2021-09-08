@@ -17,7 +17,7 @@ const ViewAssetDetail=(props)=>{
                         <Header emotes={faShoppingBasket} colorPick="#d90053" wheretogo="viewAsset" routeSend={props.navigation} textHeader="looking deep"/>
                     </View>
                     <View style={styles.subNavContainer}>
-                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#d90053" currentPosition="1" text1="" text2="" linktoGo=""/>
+                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#d90053" currentPosition="1" text1="Assets" text2={cUOMId} wheretogo="viewAS"/>
                     </View>
                 </View>
                 <View style={styles.inputHeader}>

@@ -23,15 +23,15 @@ const homepage =(props)=>{
                 </View>                
                 <View style ={styles.buttonContainer}>
                 <View style ={styles.textContainer}>
-                    <EmoteButton emotes={faTruckLoading} colorPick="#98D6EA" wheretogo="loadHead" routeSend={props.navigation} textHeader=""/>
+                    <EmoteButton emotes={faTruckLoading} colorPick="#58BDDD" wheretogo="loadHead" routeSend={props.navigation} textHeader=""/>
                     <Text>Loading</Text>
                 </View>
                 <View>
-                    <EmoteButton emotes={faBoxOpen} colorPick="#FFD3B4" wheretogo="unloadHead" routeSend={props.navigation} textHeader=""/>
+                    <EmoteButton emotes={faBoxOpen} colorPick="#FFA668" wheretogo="unloadHead" routeSend={props.navigation} textHeader=""/>
                     <Text>UnLoading</Text>
                 </View> 
                 <View>
-                    <EmoteButton emotes={faTruck} colorPick="#98DDCA" wheretogo="delifHead"  routeSend={props.navigation} textHeader=""/> 
+                    <EmoteButton emotes={faTruck} colorPick="#5ECAAC" wheretogo="delifHead"  routeSend={props.navigation} textHeader=""/> 
                     <Text>Delivery</Text> 
                 </View>             
                 </View>

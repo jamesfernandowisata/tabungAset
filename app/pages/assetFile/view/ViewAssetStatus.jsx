@@ -1,8 +1,10 @@
 import React from 'react';
-import {View} from 'react-native'
+import {View,Text} from 'react-native';
 const ViewAssetStatus=(props)=>{
     return(
-        <View></View>
+        <View>
+            <Text>dees</Text>
+        </View>
     )
 }
 

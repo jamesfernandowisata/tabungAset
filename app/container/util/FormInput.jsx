@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Text, StyleSheet,View,TouchableOpacity} from "react-native"
+import {Text, StyleSheet,View,TouchableOpacity,ScrollView} from "react-native"
 import { Center,Button, ButtonGroup,NativeBaseProvider,Heading } from "native-base"
 import {TextInput} from "react-native-paper"
 import Axios from "axios";
@@ -35,18 +35,20 @@ export function FormInput(props){
     });
     const generateDocumentNo =()=>{
         if(formType ==="loading"){
-            Axios.post("link",inputLoad,{
-                headers:{"Content-Type": "application/json"}
-            })
-                .then(response=>{
-                    console.log("check",response);
-                    //get document no
-                    setDocumentNo(response.documentNo);
-                    setStatusButton("true");
-                })
-                .catch(error => {
-                    console.log(JSON.stringify(error));
-                });
+            // Axios.post("link",inputLoad,{
+            //     headers:{"Content-Type": "application/json"}
+            // })
+            //     .then(response=>{
+            //         console.log("check",response);
+            //         //get document no
+            //         setDocumentNo(response.documentNo);
+            //         setStatusButton("true");
+            //     })
+            //     .catch(error => {
+            //         console.log(JSON.stringify(error));
+            //     });
+            
+
         }
     }
 
@@ -54,7 +56,7 @@ export function FormInput(props){
     if(formType ==="loading"){
         return (    
             <NativeBaseProvider>
-                <View>
+                <ScrollView>
                     <Text>Document No.</Text>
                     <TextInput value={documentNo} disabled={true}/>
                     <Text>Document Type</Text>
@@ -67,7 +69,7 @@ export function FormInput(props){
                     <TextInput value={truckId} disabled={true}/>
                     <Text>Document Status</Text>
                     <TextInput value={formStatus} disabled={true}/>
-                </View>
+                </ScrollView>
                 <View>
                 <TouchableOpacity 
                 style={{
@@ -82,7 +84,7 @@ export function FormInput(props){
                     alignItems: "center",
                     justifyContent: "center",
                     elevation: 8}} 
-                onPress={generateDocumentNo} disabled={statusButton}>
+                onPress={generateDocumentNo} >
                     <FontAwesomeIcon icon={faPlus} size={36} color={"#eeeeee"}/>
                 </TouchableOpacity>
                 </View>
@@ -92,7 +94,7 @@ export function FormInput(props){
     else if(formType ==="unloading"){
         return (    
             <NativeBaseProvider>
-                <View>
+                <ScrollView>
                     <Text>Document No.</Text>
                     <TextInput value={documentNo} disabled={true}/>
                     <Text>Document Type</Text>
@@ -105,7 +107,7 @@ export function FormInput(props){
                     <TextInput value={truckId} disabled={true}/>
                     <Text>Document Status</Text>
                     <TextInput value={formStatus} disabled={true}/>
-                </View>
+                </ScrollView>
                 <View>
                 <TouchableOpacity 
                 style={{
@@ -130,12 +132,12 @@ export function FormInput(props){
     else if(formType ==="delivering"){
         return (    
             <NativeBaseProvider>
-                <View>
+                <ScrollView>
                     <Text>Document No.</Text>
                     <TextInput value={documentNo} disabled={true}/>
                     <Text>Delivery Code</Text>
                     <TextInput value={documentNo} disabled={true}/>
-                </View>
+                </ScrollView>
                 <View>
                 <TouchableOpacity 
                 style={{
