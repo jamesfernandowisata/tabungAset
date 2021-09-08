@@ -13,6 +13,7 @@ import { faTruckLoading } from "@fortawesome/free-solid-svg-icons";
 import { HeaderDetailNavigation } from "../../container/component/HeaderDetailNavigation";
 import { paddingBottom } from "styled-system";
 const loadingHeaderAdd = props => {
+  console.log("ini add", props);
   return (
     <NativeBaseProvider>
       <View style={styles.container}>
@@ -33,12 +34,18 @@ const loadingHeaderAdd = props => {
               currentPosition="1"
               text1="Header"
               text2="details"
-              wheretogo="loadDet"
+              wheretogo="home"
             />
           </View>
         </View>
         <View style={styles.inputHeader}>
-          <FormInput formType="loading" colorPick="#98D6EA" />
+          <FormInput
+            formType="loading"
+            colorPick="#98D6EA"
+            token={props.navigation.state.params.token}
+            documentType="Loading"
+            createdBy={props.navigation.state.params.user}
+          />
         </View>
       </View>
     </NativeBaseProvider>

@@ -8,7 +8,7 @@ export function Header(props){
     return(
         <View style={styles.headerNode}>    
         <View style={styles.emoteHeader}>
-            <EmoteButton emotes={props.emotes} wheretogo={props.wheretogo} colorPick={props.colorPick} routeSend={props.routeSend}/>
+            <EmoteButton emotes={props.emotes} wheretogo={props.wheretogo} colorPick={props.colorPick} routeSend={props.routeSend} token={props.token}/>
         </View>
         <View style={styles.subHead}>
             <Text style={styles.subHeadtext}>{props.textHeader}</Text>  
