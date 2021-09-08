@@ -7,10 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 export function EmoteButton(props){
 // const navigation = useNavigation()
 const address=props.wheretogo
+const token=props.token
+const user=props.user
 //console.log("ini loading data 3:",props)
-//console.log(address)
 return(
-            <TouchableOpacity onPress={()=>props.routeSend.navigate(address)}>
+            <TouchableOpacity 
+            onPress={()=>props.routeSend.navigate(address,{token:token,user:user})}
+            >
                 <FontAwesomeIcon icon={props.emotes} size={64} color={props.colorPick}/>
             </TouchableOpacity>
         )

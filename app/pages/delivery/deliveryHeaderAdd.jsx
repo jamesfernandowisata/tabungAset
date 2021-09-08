@@ -12,14 +12,21 @@ const deliveryHeaderAdd=(props)=>{
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
                     <View styles={styles.emoteContainer}>
-                        <Header emotes={faTruck} colorPick="#007a7a" wheretogo="home" routeSend={props.navigation} textHeader="Still delivering"/>
+                        <Header emotes={faTruck} colorPick="#5ECAAC" wheretogo="home" routeSend={props.navigation} textHeader="Still delivering"/>
                     </View>
                     <View styles={styles.subNavContainer}>
-                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#007a7a" currentPosition="1"/>
+                    <HeaderDetailNavigation 
+                            routeSend={props.navigation} 
+                            colorPick="#5ECAAC" 
+                            currentPosition="1" 
+                            text1="Header"
+                            text2="Detail" 
+                            wheretogo="home"
+                            />
                     </View>
                 </View>
                 <View style={styles.inputHeader}>
-                    <FormInput formType="delivering" colorPick="#007a7a"/>
+                    <FormInput formType="delivering" colorPick="#98DDCA"/>
                 </View>
             </View>
         </NativeBaseProvider>
@@ -34,12 +41,13 @@ const styles =StyleSheet.create({
     },
     headerContainer:{
         flexDirection:"column",
-        height:"19%",
+        height:"29%",
     },
     inputHeader:{
         flex:1,
         paddingLeft:"7%",
-        paddingRight:"7%"
+        paddingRight:"7%",
+        paddingBottom:"5%"
     },
     textInputStyle:{
         height:40,

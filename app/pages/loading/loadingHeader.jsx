@@ -12,18 +12,28 @@ import {HeaderDetailNavigation} from '../../container/component/HeaderDetailNavi
 import { paddingLeft } from 'styled-system';
 
 const loadingHeader=(props)=>{
+    //console.log("isi header",props)
     const [showDraft,setShowDraft] =useState(false);
     const [showOnGoing,setShowOnGoing] =useState(false);
     const [showHidden,setShowHidden]=useState(true);
+    const [token,setToken] = useState(props.navigation.state.params.token)
+    const [user,setUser] = useState(props.navigation.state.params.user)
     return(
         <NativeBaseProvider>
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
                     <View style={styles.emoteContainer}>
-                        <Header emotes={faTruckLoading} colorPick="#98D6EA" wheretogo="home" routeSend={props.navigation} textHeader="Loading Items"/>
+                        <Header emotes={faTruckLoading} colorPick="#58BDDD" wheretogo="home" routeSend={props.navigation} textHeader="Loading Items" token= {token}/>
                     </View>
                     <View style={styles.subNavContainer}>
-                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#98D6EA" currentPosition="1"/>
+                        <HeaderDetailNavigation 
+                            routeSend={props.navigation} 
+                            colorPick="#58BDDD" 
+                            currentPosition="1" 
+                            text1="Header"
+                            text2="details" 
+                            wheretogo="home"
+                            />
                     </View>
                 </View>
                 <View style={styles.bodyContainer}>
@@ -57,8 +67,10 @@ const loadingHeader=(props)=>{
                     </View>
                 </View>
                 <TouchableOpacity
-                    onPress={() => props.navigation.navigate("loadAddH")}
-                    style={styles.touchButton}>
+                    onPress={() => props.navigation.navigate("loadAddH",{token:token,user:user})}
+                    style={styles.touchButton}
+
+                    >
                     <FontAwesomeIcon icon={faPlus} size={36} color={"#eeeeee"}/>
                 </TouchableOpacity>
             </View>
@@ -93,7 +105,6 @@ const styles =StyleSheet.create({
         //backgroundColor: "",      
     },
     subNavContainer:{
-        backgroundColor: "yellow"
     },
     bodyContainer:{
         //backgroundColor: ""

@@ -1,19 +1,22 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {Text, StyleSheet,View, TouchableOpacity} from "react-native"
 import { Center,Button, ButtonGroup,NativeBaseProvider,Heading } from "native-base"
 import { faTruckLoading } from '@fortawesome/free-solid-svg-icons'
 import { faBoxOpen } from '@fortawesome/free-solid-svg-icons'
 import { faTruck } from '@fortawesome/free-solid-svg-icons'
 import { faVial } from '@fortawesome/free-solid-svg-icons'
-import {EmoteButton} from'../../container/component/EmoteButton'
+import {EmoteButton} from '../../container/component/EmoteButton'
 
 const homepage =(props)=>{
 
-   // console.log("navigation here ", props) //props ini ada variabel navigation, variable navigation didalem props ini lu passing sebagai parameter sampe ke EmoteButton.jsx
+    const [token,setToken]=useState("");
+    useEffect(()=>{
+        setToken("Bearer "+props.navigation.state.params.pass);
+    },[])
+   console.log("navigation here ", props) //props ini ada variabel navigation, variable navigation didalem props ini lu passing sebagai parameter sampe ke EmoteButton.jsx
 
-    const [sesuatu, setSesuatu] =useState("");
+    const [user, setUser] =useState(props.navigation.state.params.user);
     return (
-        
         <View style ={styles.container}>
             <NativeBaseProvider>
                 <View style ={styles.header}>
@@ -23,20 +26,20 @@ const homepage =(props)=>{
                 </View>                
                 <View style ={styles.buttonContainer}>
                 <View style ={styles.textContainer}>
-                    <EmoteButton emotes={faTruckLoading} colorPick="#98D6EA" wheretogo="loadHead" routeSend={props.navigation} textHeader=""/>
+                    <EmoteButton emotes={faTruckLoading} colorPick="#58BDDD" wheretogo="loadHead" routeSend={props.navigation} textHeader="" token={token} user={user}/>
                     <Text>Loading</Text>
                 </View>
                 <View>
-                    <EmoteButton emotes={faBoxOpen} colorPick="#FFD3B4" wheretogo="unloadHead" routeSend={props.navigation} textHeader=""/>
+                    <EmoteButton emotes={faBoxOpen} colorPick="#FFA668" wheretogo="unloadHead" routeSend={props.navigation} textHeader="" token={token} user={user}/>
                     <Text>UnLoading</Text>
                 </View> 
                 <View>
-                    <EmoteButton emotes={faTruck} colorPick="#98DDCA" wheretogo="delifHead"  routeSend={props.navigation} textHeader=""/> 
+                    <EmoteButton emotes={faTruck} colorPick="#5ECAAC" wheretogo="delifHead"  routeSend={props.navigation} textHeader="" token={token} user={user}/> 
                     <Text>Delivery</Text> 
                 </View>             
                 </View>
                 <View style={styles.footerContainer}>
-                    <EmoteButton emotes={faVial} colorPick="#7189BF" wheretogo="assetNav"  routeSend={props.navigation} textHeader=""/>  
+                    <EmoteButton emotes={faVial} colorPick="#7189BF" wheretogo="assetNav"  routeSend={props.navigation} textHeader="" token={token}/>  
                 </View> 
         </NativeBaseProvider>
             

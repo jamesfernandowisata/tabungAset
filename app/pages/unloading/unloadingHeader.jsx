@@ -19,11 +19,18 @@ const unloadingHeader=(props)=>{
             <View style={styles.container}>
                 <View style={styles.headerContainer}>
                     <View styles={styles.emoteContainer}>
-                        <Header emotes={faBoxOpen} colorPick="#FFD3B4" wheretogo="home" routeSend={props.navigation} textHeader="Unloading Item"/>
+                        <Header emotes={faBoxOpen} colorPick="#FFA668" wheretogo="home" routeSend={props.navigation} textHeader="Unloading Item"/>
                     
                     </View>
                     <View styles={styles.subNavContainer}>
-                        <HeaderDetailNavigation routeSend={props.navigation} colorPick="#FFD3B4" currentPosition="1"/>
+                    <HeaderDetailNavigation 
+                            routeSend={props.navigation} 
+                            colorPick="#FFA668" 
+                            currentPosition="1" 
+                            text1="Header"
+                            text2="Detail" 
+                            wheretogo="home"
+                            />
                     </View>
                 </View>
                 <View style={styles.bodyContainer}>
