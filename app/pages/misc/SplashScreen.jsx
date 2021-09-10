@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react';
 import {Text, StyleSheet,View,Image} from "react-native";
-
+import { faChessRook } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 const SplashScreen = (props)=>{
 
@@ -14,7 +15,11 @@ useEffect(()=>{
 
 return(
 <View style ={styles.container}>
-    <Text>something</Text>
+        <Image
+            source={require('../../../assets/reactNative.png')}
+            style={styles.imageContainer}
+            />
+        <Text style={styles.textContainer}>Loading</Text>
 </View>
 
 )
@@ -22,10 +27,19 @@ return(
 }
 const styles =StyleSheet.create({
     container: {
-        flex:1,
+        //backgroundColor:'black',
         justifyContent: 'center',
-        position:"absolute",
-        alignItems: 'center'
+        //position:"absolute",
+        alignItems: 'center',
+        top:'40%',
+        //left:'40%',
     },
+    textContainer: {
+        color:'black'
+    },
+    imageContainer:{
+        width:130,
+        height:130
+    }
 })
 export default SplashScreen

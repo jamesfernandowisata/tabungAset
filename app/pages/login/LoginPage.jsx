@@ -15,10 +15,11 @@ import {
 } from "native-base";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faKey } from "@fortawesome/free-solid-svg-icons";
+import { faChessRook } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import Axios from "axios";
 
-const LoginPage = props => {
+const LoginPage = (props) => {
   const [username, setInputUsername] = useState("");
   const [password, setInputPassword] = useState("");
   const [token, setToken] = useState("");
@@ -33,7 +34,7 @@ const LoginPage = props => {
       password: password
     });
 
-    Axios.post("http://192.168.88.152:5000/api/v1/auth/login", auth, {
+    Axios.post("http://178.128.30.185:5000/api/v1/auth/login", auth, {
       headers: { "Content-Type": "application/json" }
     })
       .then(response => {
@@ -55,6 +56,7 @@ const LoginPage = props => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+        <FontAwesomeIcon icon={faChessRook} size={64} style={styles.iconUser} />
         <Text style={styles.headerText}>Login</Text>
       </View>
       <View style={styles.buttonContainer}>
@@ -86,7 +88,7 @@ const LoginPage = props => {
           <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          // onPress={() => navigation.navigate("register")}
+          onPress={() => props.navigation.navigate("regis")}
           style={styles.registerButtonContainer}
         >
           <Text style={styles.registerText}>Register now</Text>
@@ -109,14 +111,15 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   headerText: {
-    fontSize: 30
+    fontSize: 26
   },
   header: {
     top: "2%",
-    height: "37%"
+    height: "37%",
+    alignItems: "center"
   },
   buttonContainer: {
-    height: "80%",
+    height: "70%",
     fontFamily: "sans-serif-condensed",
     fontWeight: "bold",
     paddingHorizontal: "5%",

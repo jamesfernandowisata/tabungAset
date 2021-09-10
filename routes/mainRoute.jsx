@@ -4,6 +4,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import SplashScreen from "../app/pages/misc/SplashScreen";
 
 import LoginPage from "../app/pages/login/LoginPage";
+import RegisterPage from "../app/pages/login/RegisterPage";
 import tespage from "../app/pages/misc/tespage";
 import homepage from "../app/pages/navigation/homepage";
 
@@ -28,8 +29,9 @@ import loadingDetailAdd from "../app/pages/loading/loadingDetailAdd";
 
 const AppNavigator = createSwitchNavigator(
   {
-    //SplashSc: SplashScreen,
+    SplashSc: SplashScreen,
     loginPage: LoginPage,
+    regis:RegisterPage,
     tespage: tespage,
     home: homepage,
     loadHead: loadingHeader,
@@ -48,7 +50,7 @@ const AppNavigator = createSwitchNavigator(
     viewAD: ViewAssetDetail
   },
   {
-    initialRouteName: "loginPage",
+    initialRouteName: "home",
     headerMode: "none"
   }
 );

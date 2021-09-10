@@ -16,11 +16,11 @@ import { EmoteButton } from "../../container/component/EmoteButton";
 const homepage = props => {
   const [token, setToken] = useState("");
   useEffect(() => {
-    setToken("Bearer " + props.navigation.state.params.pass);
+    //setToken("Bearer " + props.navigation.state.params.pass);
   }, []);
   console.log("navigation here ", props); //props ini ada variabel navigation, variable navigation didalem props ini lu passing sebagai parameter sampe ke EmoteButton.jsx
 
-  const [user, setUser] = useState(props.navigation.state.params.user);
+  //const [user, setUser] = useState(props.navigation.state.params.user);
   return (
     <View style={styles.container}>
       <NativeBaseProvider>
@@ -38,7 +38,7 @@ const homepage = props => {
               routeSend={props.navigation}
               textHeader=""
               token={token}
-              user={user}
+              //user={user}
             />
             <Text>Loading</Text>
           </View>
@@ -50,7 +50,7 @@ const homepage = props => {
               routeSend={props.navigation}
               textHeader=""
               token={token}
-              user={user}
+              //user={user}
             />
             <Text>UnLoading</Text>
           </View>
@@ -62,7 +62,7 @@ const homepage = props => {
               routeSend={props.navigation}
               textHeader=""
               token={token}
-              user={user}
+              //user={user}
             />
             <Text>Delivery</Text>
           </View>

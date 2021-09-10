@@ -43,6 +43,10 @@
         const [updateBy,setUpdateBy]=useState("");
         const [description,setDescription] = useState("");
     
+        useEffect(()=>{
+            
+        },[documentNo])
+
         useEffect(() => {
             getTruck();
         }, []);
@@ -67,11 +71,11 @@
 
 
         const getTruck =()=>{
-                    Axios.get("http://192.168.88.152:5000/api/v1/bpartner",{
+                    Axios.get("http://178.128.30.185:5000/api/v1/bpartner",{
                         headers:{"Content-Type": "application/json","authorization":token}
                     })
                     .then(response => {
-                        console.log("check", response);
+                        //console.log("check", response);
                     //get document no
                     //setDocumentNo(response.documentNo);
                     setTruckList(response.data.data);
@@ -82,11 +86,11 @@
                 }
 
                 const getMoreInfo =()=>{
-                    Axios.get(`http://192.168.88.152:5000/api/v1/bpartner/${selectedTruck}`,{
+                    Axios.get(`http://178.128.30.185:5000/api/v1/bpartner/${selectedTruck}`,{
                         headers:{"Content-Type": "application/json","authorization":token}
                     })
                         .then(response => {
-                            console.log("check", response);
+                            //console.log("check", response);
                             setc_bpartner_id(response.data.c_bpartner_id)
                             setc_bpartnero_id(response.data.c_bpartner_id)
                             if(documentType==="loading"){
@@ -98,29 +102,29 @@
                         .catch(error => {
                             console.log(JSON.stringify(error));
                         });
-                        Axios.get(`http://192.168.88.152:5000/api/v1/partnerloc/${selectedTruck}`,{
-                            headers:{"Content-Type": "application/json","authorization":token}
-                        })
-                        .then(response => {
-                            console.log("check", response);
-                            setc_bpartner_location_id(response.data.c_bpartner_lcoation_id)
-                            setc_bpartner_locationo_id(response.data.c_bpartner_lcoation_id)
-                            //setTruckList(response.data.data);
-                        })
-                        .catch(error => {
-                            console.log(JSON.stringify(error));
-                        });
-                    }
+                    Axios.get(`http://178.128.30.185:5000/api/v1/partnerloc/${selectedTruck}`,{
+                        headers:{"Content-Type": "application/json","authorization":token}
+                    })
+                    .then(response => {
+                        console.log("check", response);
+                        setc_bpartner_location_id(response.data.c_bpartner_lcoation_id)
+                        setc_bpartner_locationo_id(response.data.c_bpartner_lcoation_id)
+                        //setTruckList(response.data.data);
+                    })
+                    .catch(error => {
+                        console.log(JSON.stringify(error));
+                    });
+                }
 
         const generateDocumentNo =()=>{
         if(formType ==="loading"){
-                Axios.post("http://192.168.88.152:5000/api/v1/assettransfer",inputLoad,{
+                Axios.post("http://178.128.30.185:5000/api/v1/assettransfer",inputLoad,{
                     headers:{"Content-Type": "application/json", "authorization":token}
                 })
                     .then(response=>{
                         console.log("check",response);
                         //get document no
-                        //setDocumentNo(response.documentNo);
+                        setDocumentNo(response.documentNo);
                         setaddorSave(true);
                     })
                     .catch(error => {
@@ -195,7 +199,7 @@
         );
     }   
     else if (formType === "unloading") {
-            return (
+        return (
             <NativeBaseProvider>
                 <ScrollView>
                 <Text>Document No.</Text>
@@ -207,6 +211,26 @@
                 <Text>Created by</Text>
                 <TextInput value={createBy} disabled={true} />
                 <Text>Truck</Text>
+                <View style={styles.pickerInput}>
+                    <Picker
+                    style={styles.pickerText}
+                    selectedValue={truckList}
+                    onValueChange={(itemValue, itemIndex) =>
+                        setSelectedTruck(itemValue)
+                    }
+                    >
+                    {truckList.map(item => {
+                        console.log(item);
+                        return (
+                        <Picker.Item
+                            key={item.name}
+                            label={item.name}
+                            value={item.c_bpartner_id}
+                        />
+                        );
+                    })}
+                    </Picker>
+                </View>
                 <Text>Document Status</Text>
                 <TextInput value={formStatus} disabled={true} />
                 </ScrollView>
@@ -226,45 +250,78 @@
                     elevation: 8
                     }}
                     onPress={generateDocumentNo}
-                    disabled={statusButton}
                 >
+                    {addorSave ? (
+                    <FontAwesomeIcon icon={faSave} size={36} color={"#eeeeee"} />
+                    ) : (
                     <FontAwesomeIcon icon={faPlus} size={36} color={"#eeeeee"} />
+                    )}
                 </TouchableOpacity>
                 </View>
             </NativeBaseProvider>
             );
         } else if (formType === "delivering") {
             return (
-            <NativeBaseProvider>
-                <ScrollView>
-                <Text>Document No.</Text>
-                <TextInput value={documentNo} disabled={true} />
-                <Text>Delivery Code</Text>
-                <TextInput value={documentNo} disabled={true} />
-                </ScrollView>
-                <View>
-                <TouchableOpacity
-                    style={{
-                    position: "absolute",
-                    zIndex: 9,
-                    right: "7%",
-                    bottom: "15%",
-                    backgroundColor: props.colorPick,
-                    width: 80,
-                    height: 80,
-                    borderRadius: 50,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    elevation: 8
-                    }}
-                    onPress={generateDocumentNo}
-                    disabled={statusButton}
-                >
-                    <FontAwesomeIcon icon={faPlus} size={36} color={"#eeeeee"} />
-                </TouchableOpacity>
-                </View>
-            </NativeBaseProvider>
-            );
+                <NativeBaseProvider>
+                    <ScrollView>
+                    <Text>Document No.</Text>
+                    <TextInput value={documentNo} disabled={true} />
+                    <Text>Document Type</Text>
+                    <TextInput value={documentType} disabled={true} />
+                    <Text>Document Date</Text>
+                    <TextInput value={currentdate} disabled={true} />
+                    <Text>Created by</Text>
+                    <TextInput value={createBy} disabled={true} />
+                    <Text>Truck</Text>
+                    <View style={styles.pickerInput}>
+                        <Picker
+                        style={styles.pickerText}
+                        selectedValue={truckList}
+                        onValueChange={(itemValue, itemIndex) =>
+                            setSelectedTruck(itemValue)
+                        }
+                        >
+                        {truckList.map(item => {
+                            console.log(item);
+                            return (
+                            <Picker.Item
+                                key={item.name}
+                                label={item.name}
+                                value={item.c_bpartner_id}
+                            />
+                            );
+                        })}
+                        </Picker>
+                    </View>
+                    <Text>Document Status</Text>
+                    <TextInput value={formStatus} disabled={true} />
+                    </ScrollView>
+                    <View>
+                    <TouchableOpacity
+                        style={{
+                        position: "absolute",
+                        zIndex: 9,
+                        right: "7%",
+                        bottom: "10%",
+                        backgroundColor: props.colorPick,
+                        width: 80,
+                        height: 80,
+                        borderRadius: 50,
+                        alignItems: "center",
+                        justifyContent: "center",
+                        elevation: 8
+                        }}
+                        onPress={generateDocumentNo}
+                    >
+                        {addorSave ? (
+                        <FontAwesomeIcon icon={faSave} size={36} color={"#eeeeee"} />
+                        ) : (
+                        <FontAwesomeIcon icon={faPlus} size={36} color={"#eeeeee"} />
+                        )}
+                    </TouchableOpacity>
+                    </View>
+                </NativeBaseProvider>
+                );
         } 
     
     

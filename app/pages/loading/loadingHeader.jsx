@@ -39,7 +39,7 @@ const loadingHeader = props => {
               currentPosition="1"
               text1="Header"
               text2="details"
-              wheretogo="home"
+              wheretogo="loadDet"
             />
           </View>
         </View>
