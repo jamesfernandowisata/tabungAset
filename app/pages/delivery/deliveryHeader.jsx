@@ -44,7 +44,7 @@ const deliveryHeader=(props)=>{
                     </View>
                         {
                             showDraft ? (
-                                <RenderView infoData="1" infowhat="products"/>
+                                <RenderView infoData="1" infowhat="delivery"/>
                                 ):null
                         }
                     </View>
@@ -57,7 +57,7 @@ const deliveryHeader=(props)=>{
                     </View>
                         {
                             showOnGoing ? (
-                                <RenderView infoData="2" infowhat="products"/>
+                                <RenderView infoData="2" infowhat="delivery"/>
                                 ):null
                         }
                     </View>

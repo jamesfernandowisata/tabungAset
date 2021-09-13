@@ -50,7 +50,7 @@ const AppNavigator = createSwitchNavigator(
     viewAD: ViewAssetDetail
   },
   {
-    initialRouteName: "home",
+    initialRouteName: "SplashSc",
     headerMode: "none"
   }
 );

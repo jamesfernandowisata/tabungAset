@@ -57,7 +57,7 @@ const loadingHeader = props => {
             </View>
             <View style={styles.subsubBodyContainer2}>
               {showDraft ? (
-                <RenderView infoData="1" infowhat="products" />
+                <RenderView infoData="1" infowhat="loading" />
               ) : null}
             </View>
           </View>
@@ -73,7 +73,7 @@ const loadingHeader = props => {
               </TouchableOpacity>
             </View>
             {showOnGoing ? (
-              <RenderView infoData="2" infowhat="products" />
+              <RenderView infoData="2" infowhat="loading" />
             ) : null}
           </View>
         </View>

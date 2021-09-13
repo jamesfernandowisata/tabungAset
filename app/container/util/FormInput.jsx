@@ -18,7 +18,8 @@
     //console.log("Form Data:",props)
         var formType = props.formType;
 
-        const currentdate = Date()
+        const currentdate = new Date().toISOString();
+        //const [currentdate,setCurrentDate]=useState("")
         const [documentType,setDocumentType]=useState(props.documentType);
         const [truckList,setTruckList] = useState([]);
         const [selectedTruck,setSelectedTruck] = useState();
@@ -29,11 +30,11 @@
 
         //what to send
         const [a_asset_transfer_id,seta_asset_transfer_id] = useState("");
-        const [c_bpartner_id,setc_bpartner_id]=useState(""); //selectTruck
-        const [c_bpartnero_id,setc_bpartnero_id] = useState("");
-        const [c_bpartner_location_id,setc_bpartner_location_id] = useState("");
-        const [c_bpartner_locationo_id,setc_bpartner_locationo_id]=useState("");
-        const [c_doctype_id,setc_doctype_id] = useState("");
+        const [c_bpartner_id,setc_bpartner_id]=useState("0"); //selectTruck
+        const [c_bpartnero_id,setc_bpartnero_id] = useState("0");
+        const [c_bpartner_location_id,setc_bpartner_location_id] = useState("1");
+        const [c_bpartner_locationo_id,setc_bpartner_locationo_id]=useState("1");
+        const [c_doctype_id,setc_doctype_id] = useState("0");
         const [documentNo ,setDocumentNo] =useState('');
         const [documentDate,setDocumentDate]=useState(currentdate);
         const [formStatus,setFormStatus] = useState("Drafted")
@@ -41,15 +42,18 @@
         const [createBy,setCreateBy] = useState(props.createdBy);
         const [updateDate,setUpdateDate] = useState("");
         const [updateBy,setUpdateBy]=useState("");
-        const [description,setDescription] = useState("");
+        const [description,setDescription] = useState("0");
     
         useEffect(()=>{
-            
-        },[documentNo])
+            console.log(inputLoad)
+        },[c_bpartner_locationo_id,description,c_doctype_id])
 
         useEffect(() => {
             getTruck();
         }, []);
+        // useEffect(()=>{
+        //     fixDate();
+        // },[])
         useEffect(() => {
             getMoreInfo();
         }, [selectedTruck]);
@@ -69,8 +73,17 @@
             description:description
         });
 
+        const fixDate = () => {
+            setCurrentDate(
+                rawDate.toISOString()
+            )
+            };
+
 
         const getTruck =()=>{
+
+                getMoreInfo();
+
                     Axios.get("http://178.128.30.185:5000/api/v1/bpartner",{
                         headers:{"Content-Type": "application/json","authorization":token}
                     })
@@ -90,13 +103,14 @@
                         headers:{"Content-Type": "application/json","authorization":token}
                     })
                         .then(response => {
-                            //console.log("check", response);
-                            setc_bpartner_id(response.data.c_bpartner_id)
-                            setc_bpartnero_id(response.data.c_bpartner_id)
-                            if(documentType==="loading"){
-                                setc_doctype_id("1")
-                            }
-                            setDescription(response.data.description)
+                            //console.log("check partner", response.data.data);
+                            response.data.data.map(item=>{
+                                console.log(item.description)
+                                setc_bpartner_id(item.c_bpartner_id)
+                                setc_bpartnero_id(item.c_bpartner_id)
+                                setDescription(item.description)
+                            })
+                            setc_doctype_id("1")
                             //setTruckList(response.data.data);
                         })
                         .catch(error => {
@@ -106,9 +120,12 @@
                         headers:{"Content-Type": "application/json","authorization":token}
                     })
                     .then(response => {
-                        console.log("check", response);
-                        setc_bpartner_location_id(response.data.c_bpartner_lcoation_id)
-                        setc_bpartner_locationo_id(response.data.c_bpartner_lcoation_id)
+                        //console.log("check location", response.data.data);
+                        response.data.data.map((item)=>{
+                            //console.log(item)
+                            setc_bpartner_location_id(item.c_bpartner_location_id)
+                            setc_bpartner_locationo_id(item.c_bpartner_location_id)
+                        })
                         //setTruckList(response.data.data);
                     })
                     .catch(error => {
@@ -124,13 +141,13 @@
                     .then(response=>{
                         console.log("check",response);
                         //get document no
-                        setDocumentNo(response.documentNo);
+                        //setDocumentNo(response.documentNo);
                         setaddorSave(true);
                     })
                     .catch(error => {
                         console.log(JSON.stringify(error));
                     });
-
+                console.log(inputLoad);
             }
             //setaddorSave(true);
         }
@@ -151,13 +168,15 @@
             <View style={styles.pickerInput}>
                 <Picker
                 style={styles.pickerText}
-                selectedValue={truckList}
+                selectedValue={selectedTruck}
                 onValueChange={(itemValue, itemIndex) =>
                     setSelectedTruck(itemValue)
                 }
+                //value=''
+                label='tesaja'
                 >
                 {truckList.map(item => {
-                    console.log(item);
+                    //console.log(item);
                     return (
                     <Picker.Item
                         key={item.name}
@@ -214,13 +233,13 @@
                 <View style={styles.pickerInput}>
                     <Picker
                     style={styles.pickerText}
-                    selectedValue={truckList}
+                    selectedValue={selectedTruck}
                     onValueChange={(itemValue, itemIndex) =>
                         setSelectedTruck(itemValue)
                     }
                     >
                     {truckList.map(item => {
-                        console.log(item);
+                        //console.log(item);
                         return (
                         <Picker.Item
                             key={item.name}
