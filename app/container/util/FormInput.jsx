@@ -27,8 +27,9 @@
         const [token,setToken] = useState(props.token);
         const [addorSave, setaddorSave] = useState(false);
 
+
         //what to send
-        const [a_asset_transfer_id,seta_asset_transfer_id] = useState("1");
+        //const [a_asset_transfer_id,seta_asset_transfer_id] = useState("1");
         const [c_bpartner_id,setc_bpartner_id]=useState("0"); //selectTruck
         const [c_bpartnero_id,setc_bpartnero_id] = useState("0");
         const [c_bpartner_location_id,setc_bpartner_location_id] = useState("1");
@@ -44,8 +45,12 @@
         const [description,setDescription] = useState("0");
     
         useEffect(()=>{
-            console.log(inputLoad)
+            //console.log(inputLoad)
         },[c_bpartner_locationo_id,description,c_doctype_id])
+
+        useEffect(()=>{
+            console.log("dezz")
+        },[documentNo])
 
         useEffect(() => {
             getTruck();
@@ -58,11 +63,11 @@
         }, [selectedTruck]);
 
         const inputLoad = JSON.stringify({
-            a_asset_transfer_id:a_asset_transfer_id,
+            //a_asset_transfer_id:a_asset_transfer_id,
             c_bpartner_id:c_bpartner_id,
-            c_bpartnero_id :c_bpartnero_id,
+            c_bpartnerto_id :c_bpartnero_id,
             c_bpartner_location_id:c_bpartner_location_id,
-            c_bpartner_locationo_id:c_bpartner_locationo_id,
+            c_bpartner_locationto_id:c_bpartner_locationo_id,
             c_doctype_id:c_doctype_id,
             docdate:documentDate,
             docstatus:formStatus,
@@ -84,9 +89,9 @@
                         headers:{"Content-Type": "application/json","authorization":token}
                     })
                     .then(response => {
-                        //console.log("check", response);
+                        console.log("check", response.data.data);
                     //get document no
-                    //setDocumentNo(response.documentNo);
+                    //setDocumentNo(response.data.data.documentNo);
                     setTruckList(response.data.data);
                     })
                     .catch(error => {
@@ -137,7 +142,7 @@
                     .then(response=>{
                         console.log("check",response);
                         //get document no
-                        //setDocumentNo(response.documentNo);
+                        setDocumentNo(response.data.data.documentNo);
                         setaddorSave(true);
                     })
                     .catch(error => {
@@ -168,6 +173,7 @@
                 onValueChange={(itemValue, itemIndex) =>
                     setSelectedTruck(itemValue)
                 }
+                disabled={addorSave}
                 //value=''
                 label='tesaja'
                 >
@@ -233,6 +239,7 @@
                     onValueChange={(itemValue, itemIndex) =>
                         setSelectedTruck(itemValue)
                     }
+                    disabled={true}
                     >
                     {truckList.map(item => {
                         //console.log(item);
@@ -327,6 +334,7 @@
                         elevation: 8
                         }}
                         onPress={generateDocumentNo}
+                        disabled={!addorSave}
                     >
                         {addorSave ? (
                         <FontAwesomeIcon icon={faSave} size={36} color={"#eeeeee"} />
