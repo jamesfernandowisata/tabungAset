@@ -66,7 +66,7 @@
             /> */}
             </SafeAreaView>
             <TouchableOpacity
-            onPress={() => props.navigation.navigate("loadDetAdd")}
+            onPress={() => props.navigation.navigate("unloadDetAdd")}
             style={styles.touchButton}
             >
             <FontAwesomeIcon icon={faPlus} size={36} color={"#eeeeee"} />
