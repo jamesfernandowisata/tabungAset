@@ -21,7 +21,7 @@ const deliveryHeaderAdd=(props)=>{
                             currentPosition="1" 
                             text1="Header"
                             text2="Detail" 
-                            wheretogo="home"
+                            wheretogo="delivDet"
                             />
                     </View>
                 </View>

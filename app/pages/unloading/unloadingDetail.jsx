@@ -24,7 +24,7 @@
     //   </View>
     // );
 
-    const deliveryDetail = props => {
+    const unloadingDetail = props => {
     const [documentNo, setDocumentNo] = useState("");
     const [documentType, setDocumentType] = useState("");
     const [documentDate, setDocumentDate] = useState("");
@@ -39,20 +39,20 @@
             <View style={styles.emoteContainer}>
                 <Header
                 emotes={faTruckLoading}
-                colorPick="#5ECAAC"
-                wheretogo="delivAddH"
+                colorPick="#FFA668"
+                wheretogo="unloadAddH"
                 routeSend={props.navigation}
-                textHeader="Delivering Items"
+                textHeader="Unloading Items"
                 />
             </View>
             <View style={styles.subNavContainer}>
                 <HeaderDetailNavigation
                 routeSend={props.navigation}
-                colorPick="#5ECAAC"
+                colorPick="#FFA668"
                 currentPosition="2"
                 text1="Header"
                 text2="Details"
-                wheretogo="delivDetAdd"
+                wheretogo="unloadDetAdd"
                 />
             </View>
             </View>
@@ -66,7 +66,7 @@
             /> */}
             </SafeAreaView>
             <TouchableOpacity
-            onPress={() => props.navigation.navigate("delivDetAdd")}
+            onPress={() => props.navigation.navigate("loadDetAdd")}
             style={styles.touchButton}
             >
             <FontAwesomeIcon icon={faPlus} size={36} color={"#eeeeee"} />
@@ -96,7 +96,7 @@
         zIndex: 9,
         right: "7%",
         bottom: "10%",
-        backgroundColor: "#5ECAAC",
+        backgroundColor: "#FFA668",
         width: 80,
         height: 80,
         borderRadius: 50,
@@ -121,4 +121,4 @@
     }
     });
 
-    export default deliveryDetail;
+    export default unloadingDetail;

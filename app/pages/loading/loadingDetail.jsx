@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     zIndex: 9,
     right: "7%",
     bottom: "10%",
-    backgroundColor: "#003f5a",
+    backgroundColor: "#58BDDD",
     width: 80,
     height: 80,
     borderRadius: 50,

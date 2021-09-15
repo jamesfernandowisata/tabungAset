@@ -21,7 +21,7 @@
     import { overflow, justifyContent, paddingTop } from "styled-system";
     import Axios from "axios";
 
-    const deliveryDetailAdd = props => {
+    const unloadingDetailAdd = props => {
     const [hasPermission, setHasPermission] = useState(null);
     const [dataList, setDataList] = useState([]);
     const [scanned, setScanned] = useState(false);
@@ -88,20 +88,20 @@
                 </View>
                 <Header
                 emotes={faTruckLoading}
-                colorPick="#5ECAAC"
-                wheretogo="loadDet"
+                colorPick="#FFA668"
+                wheretogo="unloadDet"
                 routeSend={props.navigation}
-                textHeader="What's delivering"
+                textHeader="What's unloading"
                 />
             </View>
             <View styles={styles.subNavContainer}>
                 <HeaderDetailNavigation
                 routeSend={props.navigation}
-                colorPick="#5ECAAC"
+                colorPick="#FFA668"
                 currentPosition="2"
                 text1="Header"
                 text2="Details"
-                wheretogo="delivDet"
+                wheretogo="unloadDet"
                 />
             </View>
             </View>
@@ -170,5 +170,4 @@
     }
     });
 
-    export default deliveryDetailAdd;
-
+    export default unloadingDetailAdd;

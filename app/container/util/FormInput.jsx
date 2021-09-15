@@ -19,7 +19,6 @@
         var formType = props.formType;
 
         const currentdate = new Date().toISOString();
-        //const [currentdate,setCurrentDate]=useState("")
         const [documentType,setDocumentType]=useState(props.documentType);
         const [truckList,setTruckList] = useState([]);
         const [selectedTruck,setSelectedTruck] = useState();
@@ -29,7 +28,7 @@
         const [addorSave, setaddorSave] = useState(false);
 
         //what to send
-        const [a_asset_transfer_id,seta_asset_transfer_id] = useState("");
+        const [a_asset_transfer_id,seta_asset_transfer_id] = useState("1");
         const [c_bpartner_id,setc_bpartner_id]=useState("0"); //selectTruck
         const [c_bpartnero_id,setc_bpartnero_id] = useState("0");
         const [c_bpartner_location_id,setc_bpartner_location_id] = useState("1");
@@ -59,6 +58,7 @@
         }, [selectedTruck]);
 
         const inputLoad = JSON.stringify({
+            a_asset_transfer_id:a_asset_transfer_id,
             c_bpartner_id:c_bpartner_id,
             c_bpartnero_id :c_bpartnero_id,
             c_bpartner_location_id:c_bpartner_location_id,
@@ -73,11 +73,7 @@
             description:description
         });
 
-        const fixDate = () => {
-            setCurrentDate(
-                rawDate.toISOString()
-            )
-            };
+
 
 
         const getTruck =()=>{
