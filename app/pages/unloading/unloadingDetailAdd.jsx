@@ -9,7 +9,7 @@
     RefreshControl
     } from "react-native";
     import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-    import { faTruckLoading } from "@fortawesome/free-solid-svg-icons";
+    import { faBoxOpen } from "@fortawesome/free-solid-svg-icons";
     //import { faPlus } from "@fortawesome/free-solid-svg-icons";
     import { Header } from "../../container/component/Header";
     import { NativeBaseProvider, Center } from "native-base";
@@ -87,7 +87,7 @@
                 )}
                 </View>
                 <Header
-                emotes={faTruckLoading}
+                emotes={faBoxOpen}
                 colorPick="#FFA668"
                 wheretogo="unloadDet"
                 routeSend={props.navigation}

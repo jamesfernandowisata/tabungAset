@@ -40,11 +40,12 @@ const loadingHeaderAdd = props => {
         </View>
         <View style={styles.inputHeader}>
           <FormInput
-            formType="loading"
+            formType="general"
             colorPick="#98D6EA"
             token={props.navigation.state.params.token}
             documentType="Loading"
             createdBy={props.navigation.state.params.user}
+            doctype="1"
           />
         </View>
       </View>

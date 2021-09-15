@@ -7,7 +7,7 @@
     SafeAreaView
     } from "react-native";
     import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-    import { faTruckLoading } from "@fortawesome/free-solid-svg-icons";
+    import { faBoxOpen } from "@fortawesome/free-solid-svg-icons";
     import { faPlus } from "@fortawesome/free-solid-svg-icons";
     import { Header } from "../../container/component/Header";
     import { NativeBaseProvider } from "native-base";
@@ -38,7 +38,7 @@
             <View style={styles.headerContainer}>
             <View style={styles.emoteContainer}>
                 <Header
-                emotes={faTruckLoading}
+                emotes={faBoxOpen}
                 colorPick="#FFA668"
                 wheretogo="unloadAddH"
                 routeSend={props.navigation}

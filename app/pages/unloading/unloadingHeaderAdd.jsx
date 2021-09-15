@@ -26,7 +26,14 @@ const unloadingHeaderAdd=(props)=>{
                     </View>
                 </View>
                 <View style={styles.inputHeader}>
-                    <FormInput formType="unloading" colorPick="#FFD3B4"/>
+                    <FormInput
+                        formType="general"
+                        colorPick="#FFA668"
+                        token={props.navigation.state.params.token}
+                        documentType="unloading"
+                        createdBy={props.navigation.state.params.user}
+                        doctype="2"
+                        />
                 </View>
             </View>
         </NativeBaseProvider>

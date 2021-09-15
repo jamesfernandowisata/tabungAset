@@ -34,7 +34,7 @@
         const [c_bpartnero_id,setc_bpartnero_id] = useState("0");
         const [c_bpartner_location_id,setc_bpartner_location_id] = useState("1");
         const [c_bpartner_locationo_id,setc_bpartner_locationo_id]=useState("1");
-        const [c_doctype_id,setc_doctype_id] = useState("0");
+        const [c_doctype_id,setc_doctype_id] = useState(props.doctype);
         const [documentNo ,setDocumentNo] =useState('');
         const [documentDate,setDocumentDate]=useState(currentdate);
         const [formStatus,setFormStatus] = useState("Drafted")
@@ -111,7 +111,6 @@
                                 setc_bpartnero_id(item.c_bpartner_id)
                                 setDescription(item.description)
                             })
-                            setc_doctype_id("1")
                             //setTruckList(response.data.data);
                         })
                         .catch(error => {
@@ -135,7 +134,7 @@
                 }
 
         const generateDocumentNo =()=>{
-        if(formType ==="loading"){
+        if(formType ==="general"){
                 Axios.post("http://178.128.30.185:5000/api/v1/assettransfer",inputLoad,{
                     headers:{"Content-Type": "application/json", "authorization":token}
                 })
@@ -218,134 +217,7 @@
             </View>
         </NativeBaseProvider>
         );
-    }   
-    else if (formType === "unloading") {
-        return (
-            <NativeBaseProvider>
-                <ScrollView>
-                <Text>Document No.</Text>
-                <TextInput value={documentNo} disabled={true} />
-                <Text>Document Type</Text>
-                <TextInput value={documentType} disabled={true} />
-                <Text>Document Date</Text>
-                <TextInput value={currentdate} disabled={true} />
-                <Text>Created by</Text>
-                <TextInput value={createBy} disabled={true} />
-                <Text>Truck</Text>
-                <View style={styles.pickerInput}>
-                    <Picker
-                    style={styles.pickerText}
-                    selectedValue={selectedTruck}
-                    onValueChange={(itemValue, itemIndex) =>
-                        setSelectedTruck(itemValue)
-                    }
-                    disabled={true}
-                    >
-                    {truckList.map(item => {
-                        //console.log(item);
-                        return (
-                        <Picker.Item
-                            key={item.name}
-                            label={item.name}
-                            value={item.c_bpartner_id}
-                        />
-                        );
-                    })}
-                    </Picker>
-                </View>
-                <Text>Document Status</Text>
-                <TextInput value={formStatus} disabled={true} />
-                </ScrollView>
-                <View>
-                <TouchableOpacity
-                    style={{
-                    position: "absolute",
-                    zIndex: 9,
-                    right: "7%",
-                    bottom: "10%",
-                    backgroundColor: props.colorPick,
-                    width: 80,
-                    height: 80,
-                    borderRadius: 50,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    elevation: 8
-                    }}
-                    onPress={generateDocumentNo}
-                >
-                    {addorSave ? (
-                    <FontAwesomeIcon icon={faSave} size={36} color={"#eeeeee"} />
-                    ) : (
-                    <FontAwesomeIcon icon={faPlus} size={36} color={"#eeeeee"} />
-                    )}
-                </TouchableOpacity>
-                </View>
-            </NativeBaseProvider>
-            );
-        } else if (formType === "delivering") {
-            return (
-                <NativeBaseProvider>
-                    <ScrollView>
-                    <Text>Document No.</Text>
-                    <TextInput value={documentNo} disabled={true} />
-                    <Text>Document Type</Text>
-                    <TextInput value={documentType} disabled={true} />
-                    <Text>Document Date</Text>
-                    <TextInput value={currentdate} disabled={true} />
-                    <Text>Created by</Text>
-                    <TextInput value={createBy} disabled={true} />
-                    <Text>Truck</Text>
-                    <View style={styles.pickerInput}>
-                        <Picker
-                        style={styles.pickerText}
-                        selectedValue={truckList}
-                        onValueChange={(itemValue, itemIndex) =>
-                            setSelectedTruck(itemValue)
-                        }
-                        >
-                        {truckList.map(item => {
-                            console.log(item);
-                            return (
-                            <Picker.Item
-                                key={item.name}
-                                label={item.name}
-                                value={item.c_bpartner_id}
-                            />
-                            );
-                        })}
-                        </Picker>
-                    </View>
-                    <Text>Document Status</Text>
-                    <TextInput value={formStatus} disabled={true} />
-                    </ScrollView>
-                    <View>
-                    <TouchableOpacity
-                        style={{
-                        position: "absolute",
-                        zIndex: 9,
-                        right: "7%",
-                        bottom: "10%",
-                        backgroundColor: props.colorPick,
-                        width: 80,
-                        height: 80,
-                        borderRadius: 50,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        elevation: 8
-                        }}
-                        onPress={generateDocumentNo}
-                        disabled={!addorSave}
-                    >
-                        {addorSave ? (
-                        <FontAwesomeIcon icon={faSave} size={36} color={"#eeeeee"} />
-                        ) : (
-                        <FontAwesomeIcon icon={faPlus} size={36} color={"#eeeeee"} />
-                        )}
-                    </TouchableOpacity>
-                    </View>
-                </NativeBaseProvider>
-                );
-        } 
+    }
     
     
     }

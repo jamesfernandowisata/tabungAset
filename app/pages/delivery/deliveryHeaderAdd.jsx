@@ -26,7 +26,14 @@ const deliveryHeaderAdd=(props)=>{
                     </View>
                 </View>
                 <View style={styles.inputHeader}>
-                    <FormInput formType="delivering" colorPick="#98DDCA"/>
+                    <FormInput
+                        formType="general"
+                        colorPick="#5ECAAC"
+                        token={props.navigation.state.params.token}
+                        documentType="Delivering"
+                        createdBy={props.navigation.state.params.user}
+                        doctype="3"
+                        />
                 </View>
             </View>
         </NativeBaseProvider>
