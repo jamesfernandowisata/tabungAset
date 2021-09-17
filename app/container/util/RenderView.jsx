@@ -3,13 +3,13 @@ import {View, FlatList,Text, RefreshControl,StyleSheet, SafeAreaView, TouchableO
 import Axios from "axios";
 
 
-export function RenderView(navigation){
+export function RenderView(props){
     const [dataList, setDataList] =useState([]);
     const [page, setPage] =useState(1);
     const [fetchMore, setFetchMore] =useState(true);
     const [filterList, setFilterList] =useState([]);
-    const [whattoget,setwhattoget] =useState(navigation.infowhat);
-
+    //const [whattoget,setwhattoget] =useState(props.navigation.infowhat);
+    const [token,setToken] = useState(props.routeSend.state.params.token);
     // const [getDocType,setDocType]=useState(navigation.infoData)
     useEffect(()=>{
         getData();
@@ -23,10 +23,14 @@ export function RenderView(navigation){
     }, [page]);
 
     const getData =(refresh)=>{
+
+        console.log(props)
         if (refresh) {
             setFetchMore(true);
         }
-        Axios.get(`http://178.128.30.185:5000/api/v1/${whattoget}?page=${page}&limit=8`)
+        Axios.get(`http://178.128.30.185:5000/api/v1/assettransfer?page=${page}&limit=8`,{
+            headers:{"Content-Type": "application/json","authorization":token}
+        })
             .then((response)=>{
                 //console.log(response);
                 setDataList(response.data.data);
@@ -38,7 +42,7 @@ export function RenderView(navigation){
 
     const getMoreData=()=>{
         if(fetchMore){
-            Axios.get(`http://178.128.30.185:5000/api/v1/${whattoget}?page=${page}&limit=8`)
+            Axios.get(`http://178.128.30.185:5000/api/v1/assettransfer}?page=${page}&limit=8`)
                 .then((response)=>{
                     if(response.data.isMaxPage){
                         setFetchMore(false);
@@ -52,8 +56,8 @@ export function RenderView(navigation){
     }
 
     const filterData=()=>{
-        console.log(dataList)
-        var tes= dataList.filter(data=>data.c_uom_id==navigation.infoData.toString())
+        //console.log(dataList)
+        var tes= dataList.filter(data=>data.c_doctype_id==props.navigation.infoData.toString())
         setFilterList(tes)
         // setTimeout(()=>{console.log(filterList)},1000)
         
@@ -78,12 +82,12 @@ export function RenderView(navigation){
                         style={styles.buttonContainer}
                         >
                             <View style={styles.dataContainer}>
-                                <Text>{item.m_product_id}</Text>
-                                <Text>{item.price}</Text>
+                                <Text>{item.documentno}</Text>
+                                <Text>{item.updated}</Text>
                             </View>
                             <View style={styles.dataContainer}>
-                                <Text>{item.name}</Text>
-                                <Text>{item.c_uom_id}</Text>
+                                <Text>{item.c_bpartner_id}</Text>
+                                <Text>{item.description}</Text>
                             </View>
                         </TouchableOpacity>
                         </View>
