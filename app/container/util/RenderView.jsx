@@ -15,19 +15,22 @@ export function RenderView(props){
         getData();
         
     },[]);
-    useEffect(()=>{
-        filterData();
-    },[dataList])
     useEffect(() => {
-        getMoreData();
-    }, [page]);
+        console.log(dataList);
+    },[dataList])
+    // useEffect(()=>{
+    //     filterData();
+    // },[dataList])
+    // useEffect(() => {
+    //     getMoreData();
+    // }, [page]);
 
     const getData =(refresh)=>{
 
-        console.log(props)
-        if (refresh) {
-            setFetchMore(true);
-        }
+        //console.log(props)
+        // if (refresh) {
+        //     setFetchMore(true);
+        //}
         Axios.get(`http://178.128.30.185:5000/api/v1/assettransfer?page=${page}&limit=8`,{
             headers:{"Content-Type": "application/json","authorization":token}
         })
@@ -40,33 +43,33 @@ export function RenderView(props){
             })
     }
 
-    const getMoreData=()=>{
-        if(fetchMore){
-            Axios.get(`http://178.128.30.185:5000/api/v1/assettransfer}?page=${page}&limit=8`)
-                .then((response)=>{
-                    if(response.data.isMaxPage){
-                        setFetchMore(false);
-                    }
-                    setDataList(response.data.data);
-                })
-                .catch((error)=>{
-                    console.log(error);
-                })
-        }
-    }
+    // const getMoreData=()=>{
+    //     if(fetchMore){
+    //         Axios.get(`http://178.128.30.185:5000/api/v1/assettransfer}?page=${page}&limit=8`)
+    //             .then((response)=>{
+    //                 if(response.data.isMaxPage){
+    //                     setFetchMore(false);
+    //                 }
+    //                 setDataList(response.data.data);
+    //             })
+    //             .catch((error)=>{
+    //                 console.log(error);
+    //             })
+    //     }
+    // }
 
-    const filterData=()=>{
-        //console.log(dataList)
-        var tes= dataList.filter(data=>data.c_doctype_id==props.navigation.infoData.toString())
-        setFilterList(tes)
-        // setTimeout(()=>{console.log(filterList)},1000)
+    // const filterData=()=>{
+    //     //console.log(dataList)
+    //     var tes= dataList.filter(data=>data.c_doctype_id==props.navigation.infoData.toString())
+    //     setFilterList(tes)
+    //     // setTimeout(()=>{console.log(filterList)},1000)
         
-    }
+    // }
     return(
         <SafeAreaView>
             <View>
             <FlatList
-                data={filterList}           
+                data={dataList}           
                 onEndReachedThreshold={0.01}
                 onEndReached={()=> setPage(page+1)}
                 refreshControl={
