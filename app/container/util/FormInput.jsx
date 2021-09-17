@@ -26,7 +26,7 @@
         const [statusButton,setStatusButton] = useState("false")
         const [token,setToken] = useState(props.token);
         const [addorSave, setaddorSave] = useState(false);
-
+        const [refreshing,setRefreshing] = useState(false);
 
         //what to send
         //const [a_asset_transfer_id,seta_asset_transfer_id] = useState("1");
@@ -49,7 +49,7 @@
         },[c_bpartner_locationo_id,description,c_doctype_id])
 
         useEffect(()=>{
-            console.log("dezz")
+            setRefreshing(true);
         },[documentNo])
 
         useEffect(() => {
@@ -152,12 +152,16 @@
             //setaddorSave(true);
         }
     
-    if (formType === "loading") {
+    if (formType === "general") {
         return (
         <NativeBaseProvider>
             <ScrollView>
             <Text>Document No.</Text>
-            <TextInput value={documentNo} disabled={true} />
+            {refreshing ? (
+                <TextInput value={documentNo} disabled={true} />
+                ) : (
+                    <TextInput value="null" disabled={true} />
+                )}
             <Text>Document Type</Text>
             <TextInput value={documentType} disabled={true} />
             <Text>Document Date</Text>
