@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {View, FlatList,Text, RefreshControl,StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native';
 import Axios from "axios";
-
+import moment from "moment";
 
 export function RenderView(props){
     const [dataList, setDataList] =useState([]);
@@ -80,13 +80,14 @@ export function RenderView(props){
                 }
                 renderItem={({item})=>(                   
                         <View style={styles.widthControl}>
+
                         <TouchableOpacity
                         //onPress={() => navigation.navigate("Detail", item)}
                         style={styles.buttonContainer}
                         >
                             <View style={styles.dataContainer}>
                                 <Text>{item.documentno}</Text>
-                                <Text>{item.updated}</Text>
+                                <Text>{moment(item.updated).format('D/MM/YYYY')}</Text>
                             </View>
                             <View style={styles.dataContainer}>
                                 <Text>{item.c_bpartner_id}</Text>

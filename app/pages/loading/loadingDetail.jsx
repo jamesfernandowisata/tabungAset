@@ -52,7 +52,7 @@ const loadingDetail = props => {
               currentPosition="2"
               text1="Header"
               text2="Details"
-              wheretogo="loadDetAdd"
+              wheretogo="loadHead"
             />
           </View>
         </View>

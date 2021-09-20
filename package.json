@@ -18,6 +18,7 @@
     "expo-barcode-scanner": "^10.2.2",
     "expo-keep-awake": "~9.2.0",
     "expo-status-bar": "~1.0.4",
+    "moment": "^2.29.1",
     "native-base": "^3.1.0",
     "react": "16.13.1",
     "react-bootstrap": "^1.6.1",

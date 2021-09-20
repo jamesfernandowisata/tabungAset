@@ -23,7 +23,7 @@
         const [truckList,setTruckList] = useState([]);
         const [selectedTruck,setSelectedTruck] = useState();
 
-        const [statusButton,setStatusButton] = useState("false")
+        const [statusButton,setStatusButton] = useState(false)
         const [token,setToken] = useState(props.token);
         const [addorSave, setaddorSave] = useState(false);
         const [refreshing,setRefreshing] = useState(false);
@@ -35,7 +35,7 @@
         const [c_bpartner_location_id,setc_bpartner_location_id] = useState("1");
         const [c_bpartner_locationo_id,setc_bpartner_locationo_id]=useState("1");
         const [c_doctype_id,setc_doctype_id] = useState(props.doctype);
-        const [documentNo ,setDocumentNo] =useState('');
+        const [documentNo ,setDocumentNo] =useState("");
         const [documentDate,setDocumentDate]=useState(currentdate);
         const [formStatus,setFormStatus] = useState("Drafted")
         const [createDate,setCreateDate] =useState("");
@@ -50,6 +50,7 @@
 
         useEffect(()=>{
             setRefreshing(true);
+            console.log("it change")
         },[documentNo])
 
         useEffect(() => {
@@ -89,7 +90,7 @@
                         headers:{"Content-Type": "application/json","authorization":token}
                     })
                     .then(response => {
-                        console.log("check", response.data.data);
+                        //console.log("check", response.data.data);
                     //get document no
                     //setDocumentNo(response.data.data.documentNo);
                     setTruckList(response.data.data);
@@ -106,7 +107,7 @@
                         .then(response => {
                             //console.log("check partner", response.data.data);
                             response.data.data.map(item=>{
-                                console.log(item.description)
+                                //console.log(item.description)
                                 setc_bpartner_id(item.c_bpartner_id)
                                 setc_bpartnero_id(item.c_bpartner_id)
                                 setDescription(item.description)
@@ -139,10 +140,12 @@
                     headers:{"Content-Type": "application/json", "authorization":token}
                 })
                     .then(response=>{
-                        console.log("check",response);
+                        console.log("check",response.data.data);
                         //get document no
-                        setDocumentNo(response.data.data.documentNo);
+                        setDocumentNo(response.data.data.documentno);
                         setaddorSave(true);
+                        setRefreshing(true);
+                        setStatusButton(true)
                     })
                     .catch(error => {
                         console.log(JSON.stringify(error));
@@ -176,7 +179,6 @@
                 onValueChange={(itemValue, itemIndex) =>
                     setSelectedTruck(itemValue)
                 }
-                disabled={addorSave}
                 //value=''
                 label='tesaja'
                 >
@@ -210,6 +212,7 @@
                 justifyContent: "center",
                 elevation: 8
                 }}
+                disabled={statusButton}
                 onPress={generateDocumentNo}
             >
                 {addorSave ? (
