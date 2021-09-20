@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import {
   Center,
@@ -13,7 +13,12 @@ import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import { faVial } from "@fortawesome/free-solid-svg-icons";
 import { EmoteButton } from "../../container/component/EmoteButton";
 
+
+export const generalContext = React.createContext();
+
+
 const homepage = props => {
+
   const [token, setToken] = useState("");
   useEffect(() => {
     setToken("Bearer " + props.navigation.state.params.pass);
@@ -22,6 +27,7 @@ const homepage = props => {
 
   const [user, setUser] = useState(props.navigation.state.params.user);
   return (
+    <generalContext.Provider token ={token} user ={user} >
     <View style={styles.container}>
       <NativeBaseProvider>
         <View style={styles.header}>
@@ -37,8 +43,8 @@ const homepage = props => {
               wheretogo="loadHead"
               routeSend={props.navigation}
               textHeader=""
-              token={token}
-              user={user}
+              //token={token}
+              //user={user}
             />
             <Text>Loading</Text>
           </View>
@@ -49,8 +55,8 @@ const homepage = props => {
               wheretogo="unloadHead"
               routeSend={props.navigation}
               textHeader=""
-              token={token}
-              user={user}
+              //token={token}
+              //user={user}
             />
             <Text>UnLoading</Text>
           </View>
@@ -61,8 +67,8 @@ const homepage = props => {
               wheretogo="delifHead"
               routeSend={props.navigation}
               textHeader=""
-              token={token}
-              user={user}
+              //token={token}
+              //user={user}
             />
             <Text>Delivery</Text>
           </View>
@@ -74,11 +80,12 @@ const homepage = props => {
             wheretogo="assetNav"
             routeSend={props.navigation}
             textHeader=""
-            token={token}
+            //token={token}
           />
         </View>
       </NativeBaseProvider>
     </View>
+    </generalContext.Provider>
   );
 };
 

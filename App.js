@@ -5,11 +5,14 @@ import {createAppContainer} from 'react-navigation'
 
 const AppContainer = createAppContainer(AppNavigator)
 
+
 export default function App() {
   return (
-    <NavigationContainer>
-      <AppContainer/>
-    </NavigationContainer>
+    //<generalContext.Provider token="">
+        <NavigationContainer>
+          <AppContainer/>
+        </NavigationContainer>
+    //</generalContext.Provider>
   );
 }
 
