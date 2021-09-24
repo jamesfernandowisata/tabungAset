@@ -27,7 +27,7 @@ const homepage = props => {
 
   const [user, setUser] = useState(props.navigation.state.params.user);
   return (
-    <generalContext.Provider token ={token} user ={user} >
+    <generalContext.Provider token ={token} user ={user}  >
     <View style={styles.container}>
       <NativeBaseProvider>
         <View style={styles.header}>
